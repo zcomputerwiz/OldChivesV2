@@ -6,7 +6,7 @@ from typing import Callable, Dict, List, Optional, Tuple
 
 from blspy import PrivateKey, G1Element
 
-from chives.consensus.block_rewards import calculate_base_farmer_reward
+from chives.consensus.block_rewards import calculate_base_community_reward, calculate_base_farmer_reward
 from chives.pools.pool_wallet import PoolWallet
 from chives.pools.pool_wallet_info import create_pool_state, FARMING_TO_POOL, PoolWalletInfo, PoolState
 from chives.protocols.protocol_message_types import ProtocolMessageTypes
@@ -255,7 +255,7 @@ class WalletRpcApi:
                 "word": e.args[0],
             }
         except Exception as e:
-            return {"success": False, "error": str(e)}
+            return {"success": False, "error": str(e)}            
 
         fingerprint = sk.get_g1().get_fingerprint()
         await self._stop_wallet()
@@ -1127,29 +1127,38 @@ class WalletRpcApi:
         amount = 0
         pool_reward_amount = 0
         farmer_reward_amount = 0
+        community_reward_amount = 0
         fee_amount = 0
         last_height_farmed = 0
         for record in tx_records:
-            if record.wallet_id not in self.service.wallet_state_manager.wallets:
-                continue
-            if record.type == TransactionType.COINBASE_REWARD:
-                if self.service.wallet_state_manager.wallets[record.wallet_id].type() == WalletType.POOLING_WALLET:
-                    # Don't add pool rewards for pool wallets.
-                    continue
-                pool_reward_amount += record.amount
             height = record.height_farmed(self.service.constants.GENESIS_CHALLENGE)
-            if record.type == TransactionType.FEE_REWARD:
-                fee_amount += record.amount - calculate_base_farmer_reward(height)
-                farmer_reward_amount += calculate_base_farmer_reward(height)
             if height > last_height_farmed:
                 last_height_farmed = height
-            amount += record.amount
+            # Chives Network Code
+            # Do not need to calculate the Community Rewards Amount To Wallet Card
+            if( uint64(calculate_base_community_reward(height)) != uint64(record.amount) ):
+                if record.type == TransactionType.COINBASE_REWARD:
+                    if self.service.wallet_state_manager.wallets[record.wallet_id].type() == WalletType.POOLING_WALLET:
+                        # Don't add pool rewards for pool wallets.
+                        continue
+                    pool_reward_amount += record.amount
+                height = record.height_farmed(self.service.constants.GENESIS_CHALLENGE)
+                if record.type == TransactionType.FEE_REWARD:
+                    fee_amount += record.amount - calculate_base_farmer_reward(height)
+                    farmer_reward_amount += calculate_base_farmer_reward(height)
+                if height > last_height_farmed:
+                    last_height_farmed = height
+                amount += record.amount
+            # log.warning("############for record in tx_records:")
+            # log.warning(record.amount)
+            # log.warning(calculate_base_farmer_reward(height))
 
         assert amount == pool_reward_amount + farmer_reward_amount + fee_amount
         return {
             "farmed_amount": amount,
             "pool_reward_amount": pool_reward_amount,
             "farmer_reward_amount": farmer_reward_amount,
+            "community_reward_amount": community_reward_amount,
             "fee_amount": fee_amount,
             "last_height_farmed": last_height_farmed,
         }
