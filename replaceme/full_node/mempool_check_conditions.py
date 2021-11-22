@@ -3,19 +3,19 @@ import time
 from typing import Dict, List, Optional
 from clvm_rs import STRICT_MODE
 
-from replaceme.consensus.cost_calculator import NPCResult
-from replaceme.full_node.generator import create_generator_args, setup_generator_args
-from replaceme.types.blockchain_format.program import NIL
-from replaceme.types.coin_record import CoinRecord
-from replaceme.types.condition_with_args import ConditionWithArgs
-from replaceme.types.generator_types import BlockGenerator
-from replaceme.types.name_puzzle_condition import NPC
-from replaceme.util.clvm import int_from_bytes
-from replaceme.util.condition_tools import ConditionOpcode
-from replaceme.util.errors import Err
-from replaceme.util.ints import uint32, uint64, uint16
-from replaceme.wallet.puzzles.generator_loader import GENERATOR_FOR_SINGLE_COIN_MOD
-from replaceme.wallet.puzzles.rom_bootstrap_generator import get_generator
+from chives.consensus.cost_calculator import NPCResult
+from chives.full_node.generator import create_generator_args, setup_generator_args
+from chives.types.blockchain_format.program import NIL
+from chives.types.coin_record import CoinRecord
+from chives.types.condition_with_args import ConditionWithArgs
+from chives.types.generator_types import BlockGenerator
+from chives.types.name_puzzle_condition import NPC
+from chives.util.clvm import int_from_bytes
+from chives.util.condition_tools import ConditionOpcode
+from chives.util.errors import Err
+from chives.util.ints import uint32, uint64, uint16
+from chives.wallet.puzzles.generator_loader import GENERATOR_FOR_SINGLE_COIN_MOD
+from chives.wallet.puzzles.rom_bootstrap_generator import get_generator
 
 GENERATOR_MOD = get_generator()
 

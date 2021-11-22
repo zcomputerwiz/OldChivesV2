@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.util.ints import uint32
-from replaceme.util.streamable import Streamable, streamable
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.util.ints import uint32
+from chives.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

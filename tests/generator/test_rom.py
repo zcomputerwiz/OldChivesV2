@@ -1,23 +1,23 @@
 from clvm_tools import binutils
 from clvm_tools.clvmc import compile_clvm_text
 
-from replaceme.full_node.generator import run_generator
-from replaceme.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from replaceme.types.blockchain_format.program import Program, SerializedProgram
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.types.condition_with_args import ConditionWithArgs
-from replaceme.types.name_puzzle_condition import NPC
-from replaceme.types.generator_types import BlockGenerator, GeneratorArg
-from replaceme.util.clvm import int_to_bytes
-from replaceme.util.condition_tools import ConditionOpcode
-from replaceme.util.ints import uint32
-from replaceme.wallet.puzzles.load_clvm import load_clvm
+from chives.full_node.generator import run_generator
+from chives.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from chives.types.blockchain_format.program import Program, SerializedProgram
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.types.condition_with_args import ConditionWithArgs
+from chives.types.name_puzzle_condition import NPC
+from chives.types.generator_types import BlockGenerator, GeneratorArg
+from chives.util.clvm import int_to_bytes
+from chives.util.condition_tools import ConditionOpcode
+from chives.util.ints import uint32
+from chives.wallet.puzzles.load_clvm import load_clvm
 
 MAX_COST = int(1e15)
 COST_PER_BYTE = int(12000)
 
 
-DESERIALIZE_MOD = load_clvm("chialisp_deserialisation.clvm", package_or_requirement="replaceme.wallet.puzzles")
+DESERIALIZE_MOD = load_clvm("chialisp_deserialisation.clvm", package_or_requirement="chives.wallet.puzzles")
 
 
 GENERATOR_CODE = """

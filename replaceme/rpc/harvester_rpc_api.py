@@ -1,13 +1,13 @@
 from typing import Callable, Dict, List
 
-from replaceme.harvester.harvester import Harvester
-from replaceme.util.ws_message import WsRpcMessage, create_payload_dict
+from chives.harvester.harvester import Harvester
+from chives.util.ws_message import WsRpcMessage, create_payload_dict
 
 
 class HarvesterRpcApi:
     def __init__(self, harvester: Harvester):
         self.service = harvester
-        self.service_name = "replaceme_harvester"
+        self.service_name = "chives_harvester"
 
     def get_routes(self) -> Dict[str, Callable]:
         return {

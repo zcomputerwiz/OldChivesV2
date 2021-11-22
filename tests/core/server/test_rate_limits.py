@@ -2,9 +2,9 @@ import asyncio
 
 import pytest
 
-from replaceme.protocols.protocol_message_types import ProtocolMessageTypes
-from replaceme.server.outbound_message import make_msg
-from replaceme.server.rate_limits import RateLimiter, NON_TX_FREQ
+from chives.protocols.protocol_message_types import ProtocolMessageTypes
+from chives.server.outbound_message import make_msg
+from chives.server.rate_limits import RateLimiter, NON_TX_FREQ
 from tests.setup_nodes import test_constants
 
 

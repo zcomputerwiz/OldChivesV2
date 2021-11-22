@@ -7,16 +7,16 @@ from typing import Dict, List, Optional, Tuple
 from blspy import AugSchemeMPL, G1Element, PrivateKey
 from chiapos import DiskPlotter
 
-from replaceme.daemon.keychain_proxy import KeychainProxy, connect_to_keychain_and_validate, wrap_local_keychain
-from replaceme.plotting.util import add_plot_directory
-from replaceme.plotting.util import stream_plot_info_ph, stream_plot_info_pk
-from replaceme.types.blockchain_format.proof_of_space import ProofOfSpace
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.util.bech32m import decode_puzzle_hash
-from replaceme.util.config import config_path_for_filename, load_config
-from replaceme.util.keychain import Keychain
-from replaceme.util.path import mkdir
-from replaceme.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_local_sk, master_sk_to_pool_sk
+from chives.daemon.keychain_proxy import KeychainProxy, connect_to_keychain_and_validate, wrap_local_keychain
+from chives.plotting.util import add_plot_directory
+from chives.plotting.util import stream_plot_info_ph, stream_plot_info_pk
+from chives.types.blockchain_format.proof_of_space import ProofOfSpace
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.util.bech32m import decode_puzzle_hash
+from chives.util.config import config_path_for_filename, load_config
+from chives.util.keychain import Keychain
+from chives.util.path import mkdir
+from chives.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_local_sk, master_sk_to_pool_sk
 
 log = logging.getLogger(__name__)
 
@@ -114,7 +114,7 @@ class PlotKeysResolver:
         sk: Optional[PrivateKey] = await self.get_sk(keychain_proxy)
         if sk is None:
             raise RuntimeError(
-                "No keys, please run 'replaceme keys add', 'replaceme keys generate' or provide a public key with -f"
+                "No keys, please run 'chives keys add', 'chives keys generate' or provide a public key with -f"
             )
         return master_sk_to_farmer_sk(sk).get_g1()
 
@@ -122,7 +122,7 @@ class PlotKeysResolver:
         sk: Optional[PrivateKey] = await self.get_sk(keychain_proxy)
         if sk is None:
             raise RuntimeError(
-                "No keys, please run 'replaceme keys add', 'replaceme keys generate' or provide a public key with -p"
+                "No keys, please run 'chives keys add', 'chives keys generate' or provide a public key with -p"
             )
         return master_sk_to_pool_sk(sk).get_g1()
 

@@ -4,22 +4,22 @@ from typing import List, Optional, Set, Tuple
 
 import pytest
 
-from replaceme.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from replaceme.consensus.blockchain import Blockchain, ReceiveBlockResult
-from replaceme.consensus.coinbase import create_farmer_coin, create_pool_coin
-from replaceme.full_node.block_store import BlockStore
-from replaceme.full_node.coin_store import CoinStore
-from replaceme.full_node.hint_store import HintStore
-from replaceme.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.types.coin_record import CoinRecord
-from replaceme.types.full_block import FullBlock
-from replaceme.types.generator_types import BlockGenerator
-from replaceme.util.generator_tools import tx_removals_and_additions
-from replaceme.util.ints import uint64, uint32
+from chives.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from chives.consensus.blockchain import Blockchain, ReceiveBlockResult
+from chives.consensus.coinbase import create_farmer_coin, create_pool_coin
+from chives.full_node.block_store import BlockStore
+from chives.full_node.coin_store import CoinStore
+from chives.full_node.hint_store import HintStore
+from chives.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from chives.types.blockchain_format.coin import Coin
+from chives.types.coin_record import CoinRecord
+from chives.types.full_block import FullBlock
+from chives.types.generator_types import BlockGenerator
+from chives.util.generator_tools import tx_removals_and_additions
+from chives.util.ints import uint64, uint32
 from tests.wallet_tools import WalletTool
 from tests.setup_nodes import bt, test_constants
-from replaceme.types.blockchain_format.sized_bytes import bytes32
+from chives.types.blockchain_format.sized_bytes import bytes32
 from tests.util.db_connection import DBConnection
 
 

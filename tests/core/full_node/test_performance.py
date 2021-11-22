@@ -9,14 +9,14 @@ from typing import Dict
 import pytest
 import cProfile
 
-from replaceme.consensus.block_record import BlockRecord
-from replaceme.full_node.full_node_api import FullNodeAPI
-from replaceme.protocols import full_node_protocol as fnp
-from replaceme.types.condition_opcodes import ConditionOpcode
-from replaceme.types.condition_with_args import ConditionWithArgs
-from replaceme.types.unfinished_block import UnfinishedBlock
-from replaceme.util.clvm import int_to_bytes
-from replaceme.util.ints import uint64
+from chives.consensus.block_record import BlockRecord
+from chives.full_node.full_node_api import FullNodeAPI
+from chives.protocols import full_node_protocol as fnp
+from chives.types.condition_opcodes import ConditionOpcode
+from chives.types.condition_with_args import ConditionWithArgs
+from chives.types.unfinished_block import UnfinishedBlock
+from chives.util.clvm import int_to_bytes
+from chives.util.ints import uint64
 from tests.wallet_tools import WalletTool
 
 from tests.connection_utils import add_dummy_connection, connect_and_get_peer

@@ -3,18 +3,18 @@ import random
 import secrets
 from time import time
 from pathlib import Path
-from replaceme.full_node.coin_store import CoinStore
+from chives.full_node.coin_store import CoinStore
 from typing import List, Tuple
 import os
 import sys
 
 import aiosqlite
-from replaceme.util.db_wrapper import DBWrapper
-from replaceme.consensus.coinbase import create_farmer_coin, create_pool_coin
-from replaceme.consensus.default_constants import DEFAULT_CONSTANTS
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.util.ints import uint64, uint32
+from chives.util.db_wrapper import DBWrapper
+from chives.consensus.coinbase import create_farmer_coin, create_pool_coin
+from chives.consensus.default_constants import DEFAULT_CONSTANTS
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.types.blockchain_format.coin import Coin
+from chives.util.ints import uint64, uint32
 
 
 NUM_ITERS = 200

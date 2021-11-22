@@ -6,14 +6,14 @@ import io
 from clvm_tools import binutils
 from pytest import raises
 
-from replaceme.protocols.wallet_protocol import RespondRemovals
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.types.blockchain_format.program import Program
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.types.full_block import FullBlock
-from replaceme.types.weight_proof import SubEpochChallengeSegment
-from replaceme.util.ints import uint8, uint32
-from replaceme.util.streamable import (
+from chives.protocols.wallet_protocol import RespondRemovals
+from chives.types.blockchain_format.coin import Coin
+from chives.types.blockchain_format.program import Program
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.types.full_block import FullBlock
+from chives.types.weight_proof import SubEpochChallengeSegment
+from chives.util.ints import uint8, uint32
+from chives.util.streamable import (
     Streamable,
     streamable,
     parse_bool,

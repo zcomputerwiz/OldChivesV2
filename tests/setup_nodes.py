@@ -5,25 +5,25 @@ import signal
 from secrets import token_bytes
 from typing import Dict, List, Optional
 
-from replaceme.consensus.constants import ConsensusConstants
-from replaceme.daemon.server import WebSocketServer, create_server_for_daemon, daemon_launch_lock_path, singleton
-from replaceme.full_node.full_node_api import FullNodeAPI
-from replaceme.server.start_farmer import service_kwargs_for_farmer
-from replaceme.server.start_full_node import service_kwargs_for_full_node
-from replaceme.server.start_harvester import service_kwargs_for_harvester
-from replaceme.server.start_introducer import service_kwargs_for_introducer
-from replaceme.server.start_service import Service
-from replaceme.server.start_timelord import service_kwargs_for_timelord
-from replaceme.server.start_wallet import service_kwargs_for_wallet
-from replaceme.simulator.start_simulator import service_kwargs_for_full_node_simulator
-from replaceme.timelord.timelord_launcher import kill_processes, spawn_process
-from replaceme.types.peer_info import PeerInfo
-from replaceme.util.bech32m import encode_puzzle_hash
+from chives.consensus.constants import ConsensusConstants
+from chives.daemon.server import WebSocketServer, create_server_for_daemon, daemon_launch_lock_path, singleton
+from chives.full_node.full_node_api import FullNodeAPI
+from chives.server.start_farmer import service_kwargs_for_farmer
+from chives.server.start_full_node import service_kwargs_for_full_node
+from chives.server.start_harvester import service_kwargs_for_harvester
+from chives.server.start_introducer import service_kwargs_for_introducer
+from chives.server.start_service import Service
+from chives.server.start_timelord import service_kwargs_for_timelord
+from chives.server.start_wallet import service_kwargs_for_wallet
+from chives.simulator.start_simulator import service_kwargs_for_full_node_simulator
+from chives.timelord.timelord_launcher import kill_processes, spawn_process
+from chives.types.peer_info import PeerInfo
+from chives.util.bech32m import encode_puzzle_hash
 from tests.block_tools import create_block_tools, create_block_tools_async, test_constants
 from tests.util.keyring import TempKeyring
-from replaceme.util.hash import std_hash
-from replaceme.util.ints import uint16, uint32
-from replaceme.util.keychain import bytes_to_mnemonic
+from chives.util.hash import std_hash
+from chives.util.ints import uint16, uint32
+from chives.util.keychain import bytes_to_mnemonic
 from tests.time_out_assert import time_out_assert_custom_interval
 
 

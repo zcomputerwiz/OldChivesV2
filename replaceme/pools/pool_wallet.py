@@ -4,9 +4,9 @@ from typing import Any, Optional, Set, Tuple, List, Dict
 
 from blspy import PrivateKey, G2Element, G1Element
 
-from replaceme.consensus.block_record import BlockRecord
-from replaceme.pools.pool_config import PoolWalletConfig, load_pool_config, update_pool_config
-from replaceme.pools.pool_wallet_info import (
+from chives.consensus.block_record import BlockRecord
+from chives.pools.pool_config import PoolWalletConfig, load_pool_config, update_pool_config
+from chives.pools.pool_wallet_info import (
     PoolWalletInfo,
     PoolSingletonState,
     PoolState,
@@ -15,17 +15,17 @@ from replaceme.pools.pool_wallet_info import (
     LEAVING_POOL,
     create_pool_state,
 )
-from replaceme.protocols.pool_protocol import POOL_PROTOCOL_VERSION
+from chives.protocols.pool_protocol import POOL_PROTOCOL_VERSION
 
-from replaceme.types.announcement import Announcement
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.types.blockchain_format.program import Program, SerializedProgram
-from replaceme.types.coin_record import CoinRecord
-from replaceme.types.coin_spend import CoinSpend
-from replaceme.types.spend_bundle import SpendBundle
+from chives.types.announcement import Announcement
+from chives.types.blockchain_format.coin import Coin
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.types.blockchain_format.program import Program, SerializedProgram
+from chives.types.coin_record import CoinRecord
+from chives.types.coin_spend import CoinSpend
+from chives.types.spend_bundle import SpendBundle
 
-from replaceme.pools.pool_puzzles import (
+from chives.pools.pool_puzzles import (
     create_waiting_room_inner_puzzle,
     create_full_puzzle,
     SINGLETON_LAUNCHER,
@@ -43,19 +43,19 @@ from replaceme.pools.pool_puzzles import (
     get_delayed_puz_info_from_launcher_spend,
 )
 
-from replaceme.util.ints import uint8, uint32, uint64
-from replaceme.wallet.derive_keys import (
+from chives.util.ints import uint8, uint32, uint64
+from chives.wallet.derive_keys import (
     master_sk_to_pooling_authentication_sk,
     find_owner_sk,
 )
-from replaceme.wallet.sign_coin_spends import sign_coin_spends
-from replaceme.wallet.transaction_record import TransactionRecord
-from replaceme.wallet.util.wallet_types import WalletType
-from replaceme.wallet.wallet import Wallet
-from replaceme.wallet.wallet_coin_record import WalletCoinRecord
+from chives.wallet.sign_coin_spends import sign_coin_spends
+from chives.wallet.transaction_record import TransactionRecord
+from chives.wallet.util.wallet_types import WalletType
+from chives.wallet.wallet import Wallet
+from chives.wallet.wallet_coin_record import WalletCoinRecord
 
-from replaceme.wallet.wallet_info import WalletInfo
-from replaceme.wallet.util.transaction_type import TransactionType
+from chives.wallet.wallet_info import WalletInfo
+from chives.wallet.util.transaction_type import TransactionType
 
 
 class PoolWallet:
@@ -402,7 +402,7 @@ class PoolWallet:
     ) -> Tuple[TransactionRecord, bytes32, bytes32]:
         """
         A "plot NFT", or pool wallet, represents the idea of a set of plots that all pay to
-        the same pooling puzzle. This puzzle is a `replaceme singleton` that is
+        the same pooling puzzle. This puzzle is a `chives singleton` that is
         parameterized with a public key controlled by the user's wallet
         (a `smart coin`). It contains an inner puzzle that can switch between
         paying block rewards to a pool, or to a user's own wallet.

@@ -4,10 +4,10 @@
 # from secrets import token_bytes
 # import aiosqlite
 # import pytest
-# from replaceme.util.ints import uint32, uint64, uint128
-# from replaceme.wallet.wallet_coin_record import WalletCoinRecord
-# from replaceme.wallet.util.wallet_types import WalletType
-# from replaceme.types.coin import Coin
+# from chives.util.ints import uint32, uint64, uint128
+# from chives.wallet.wallet_coin_record import WalletCoinRecord
+# from chives.wallet.util.wallet_types import WalletType
+# from chives.types.coin import Coin
 #
 #
 # @pytest.fixture(scope="module")

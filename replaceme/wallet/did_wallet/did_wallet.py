@@ -6,28 +6,28 @@ from typing import Dict, Optional, List, Any, Set, Tuple, Union
 
 from blspy import AugSchemeMPL, G1Element
 from secrets import token_bytes
-from replaceme.protocols import wallet_protocol
-from replaceme.protocols.wallet_protocol import RespondAdditions, RejectAdditionsRequest
-from replaceme.server.outbound_message import NodeType
-from replaceme.types.announcement import Announcement
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.types.blockchain_format.program import Program
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.types.coin_spend import CoinSpend
-from replaceme.types.spend_bundle import SpendBundle
-from replaceme.util.ints import uint64, uint32, uint8
-from replaceme.wallet.util.transaction_type import TransactionType
+from chives.protocols import wallet_protocol
+from chives.protocols.wallet_protocol import RespondAdditions, RejectAdditionsRequest
+from chives.server.outbound_message import NodeType
+from chives.types.announcement import Announcement
+from chives.types.blockchain_format.coin import Coin
+from chives.types.blockchain_format.program import Program
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.types.coin_spend import CoinSpend
+from chives.types.spend_bundle import SpendBundle
+from chives.util.ints import uint64, uint32, uint8
+from chives.wallet.util.transaction_type import TransactionType
 
-from replaceme.wallet.did_wallet.did_info import DIDInfo
-from replaceme.wallet.lineage_proof import LineageProof
-from replaceme.wallet.transaction_record import TransactionRecord
-from replaceme.wallet.util.wallet_types import WalletType
-from replaceme.wallet.wallet import Wallet
-from replaceme.wallet.wallet_coin_record import WalletCoinRecord
-from replaceme.wallet.wallet_info import WalletInfo
-from replaceme.wallet.derivation_record import DerivationRecord
-from replaceme.wallet.did_wallet import did_wallet_puzzles
-from replaceme.wallet.derive_keys import master_sk_to_wallet_sk
+from chives.wallet.did_wallet.did_info import DIDInfo
+from chives.wallet.lineage_proof import LineageProof
+from chives.wallet.transaction_record import TransactionRecord
+from chives.wallet.util.wallet_types import WalletType
+from chives.wallet.wallet import Wallet
+from chives.wallet.wallet_coin_record import WalletCoinRecord
+from chives.wallet.wallet_info import WalletInfo
+from chives.wallet.derivation_record import DerivationRecord
+from chives.wallet.did_wallet import did_wallet_puzzles
+from chives.wallet.derive_keys import master_sk_to_wallet_sk
 
 
 class DIDWallet:

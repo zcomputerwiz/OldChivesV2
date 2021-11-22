@@ -1,6 +1,6 @@
 import pytest
-from replaceme.util.misc import format_bytes
-from replaceme.util.misc import format_minutes
+from chives.util.misc import format_bytes
+from chives.util.misc import format_minutes
 
 
 class TestMisc:

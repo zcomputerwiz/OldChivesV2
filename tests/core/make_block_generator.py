@@ -2,15 +2,15 @@ from typing import Dict
 
 import blspy
 
-from replaceme.full_node.bundle_tools import simple_solution_generator
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.types.blockchain_format.program import Program
-from replaceme.types.coin_spend import CoinSpend
-from replaceme.types.condition_opcodes import ConditionOpcode
-from replaceme.types.generator_types import BlockGenerator
-from replaceme.types.spend_bundle import SpendBundle
-from replaceme.util.ints import uint64
-from replaceme.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import puzzle_for_pk, solution_for_conditions
+from chives.full_node.bundle_tools import simple_solution_generator
+from chives.types.blockchain_format.coin import Coin
+from chives.types.blockchain_format.program import Program
+from chives.types.coin_spend import CoinSpend
+from chives.types.condition_opcodes import ConditionOpcode
+from chives.types.generator_types import BlockGenerator
+from chives.types.spend_bundle import SpendBundle
+from chives.util.ints import uint64
+from chives.wallet.puzzles.p2_delegated_puzzle_or_hidden_puzzle import puzzle_for_pk, solution_for_conditions
 
 GROUP_ORDER = 0x73EDA753299D7D483339D80809A1D80553BDA402FFFE5BFEFFFFFFFF00000001
 

@@ -1,8 +1,8 @@
 from typing import Tuple
 
-from replaceme.consensus.block_record import BlockRecord
-from replaceme.consensus.blockchain_interface import BlockchainInterface
-from replaceme.util.ints import uint128
+from chives.consensus.block_record import BlockRecord
+from chives.consensus.blockchain_interface import BlockchainInterface
+from chives.util.ints import uint128
 
 
 def get_prev_transaction_block(

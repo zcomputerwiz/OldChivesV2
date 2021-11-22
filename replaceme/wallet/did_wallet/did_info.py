@@ -1,12 +1,12 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.util.ints import uint64
-from replaceme.util.streamable import streamable, Streamable
-from replaceme.wallet.lineage_proof import LineageProof
-from replaceme.types.blockchain_format.program import Program
-from replaceme.types.blockchain_format.coin import Coin
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.util.ints import uint64
+from chives.util.streamable import streamable, Streamable
+from chives.wallet.lineage_proof import LineageProof
+from chives.types.blockchain_format.program import Program
+from chives.types.blockchain_format.coin import Coin
 
 
 @dataclass(frozen=True)

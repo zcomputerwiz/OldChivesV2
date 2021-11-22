@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 
-from replaceme.consensus.constants import ConsensusConstants
-from replaceme.types.blockchain_format.sized_bytes import bytes100
-from replaceme.util.streamable import Streamable, streamable
+from chives.consensus.constants import ConsensusConstants
+from chives.types.blockchain_format.sized_bytes import bytes100
+from chives.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

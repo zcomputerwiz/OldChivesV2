@@ -7,44 +7,44 @@ from typing import Dict, List, Optional, Tuple, Callable
 
 import pytest
 
-import replaceme.server.ws_connection as ws
+import chives.server.ws_connection as ws
 
-from replaceme.full_node.mempool import Mempool
-from replaceme.full_node.full_node_api import FullNodeAPI
-from replaceme.protocols import full_node_protocol, wallet_protocol
-from replaceme.protocols.wallet_protocol import TransactionAck
-from replaceme.server.outbound_message import Message
-from replaceme.simulator.simulator_protocol import FarmNewBlockProtocol
-from replaceme.types.announcement import Announcement
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.types.coin_spend import CoinSpend
-from replaceme.types.condition_opcodes import ConditionOpcode
-from replaceme.types.condition_with_args import ConditionWithArgs
-from replaceme.types.spend_bundle import SpendBundle
-from replaceme.types.mempool_item import MempoolItem
-from replaceme.util.clvm import int_to_bytes
-from replaceme.util.condition_tools import conditions_for_solution, pkm_pairs
-from replaceme.util.errors import Err
-from replaceme.util.ints import uint64
-from replaceme.util.hash import std_hash
-from replaceme.types.mempool_inclusion_status import MempoolInclusionStatus
-from replaceme.util.api_decorators import api_request, peer_required, bytes_required
-from replaceme.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from replaceme.types.name_puzzle_condition import NPC
-from replaceme.full_node.pending_tx_cache import PendingTxCache
+from chives.full_node.mempool import Mempool
+from chives.full_node.full_node_api import FullNodeAPI
+from chives.protocols import full_node_protocol, wallet_protocol
+from chives.protocols.wallet_protocol import TransactionAck
+from chives.server.outbound_message import Message
+from chives.simulator.simulator_protocol import FarmNewBlockProtocol
+from chives.types.announcement import Announcement
+from chives.types.blockchain_format.coin import Coin
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.types.coin_spend import CoinSpend
+from chives.types.condition_opcodes import ConditionOpcode
+from chives.types.condition_with_args import ConditionWithArgs
+from chives.types.spend_bundle import SpendBundle
+from chives.types.mempool_item import MempoolItem
+from chives.util.clvm import int_to_bytes
+from chives.util.condition_tools import conditions_for_solution, pkm_pairs
+from chives.util.errors import Err
+from chives.util.ints import uint64
+from chives.util.hash import std_hash
+from chives.types.mempool_inclusion_status import MempoolInclusionStatus
+from chives.util.api_decorators import api_request, peer_required, bytes_required
+from chives.full_node.mempool_check_conditions import get_name_puzzle_conditions
+from chives.types.name_puzzle_condition import NPC
+from chives.full_node.pending_tx_cache import PendingTxCache
 from blspy import G2Element
 
-from replaceme.util.recursive_replace import recursive_replace
+from chives.util.recursive_replace import recursive_replace
 from tests.connection_utils import connect_and_get_peer
 from tests.core.node_height import node_height_at_least
 from tests.setup_nodes import bt, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
-from replaceme.types.blockchain_format.program import Program, INFINITE_COST
-from replaceme.consensus.cost_calculator import NPCResult
-from replaceme.types.blockchain_format.program import SerializedProgram
+from chives.types.blockchain_format.program import Program, INFINITE_COST
+from chives.consensus.cost_calculator import NPCResult
+from chives.types.blockchain_format.program import SerializedProgram
 from clvm_tools import binutils
-from replaceme.types.generator_types import BlockGenerator
+from chives.types.generator_types import BlockGenerator
 from clvm.casts import int_from_bytes
 from blspy import G1Element
 
@@ -197,7 +197,7 @@ class TestMempool:
 async def respond_transaction(
     node: FullNodeAPI,
     tx: full_node_protocol.RespondTransaction,
-    peer: ws.WSReplacemeConnection,
+    peer: ws.WSChivesConnection,
     tx_bytes: bytes = b"",
     test: bool = False,
 ) -> Tuple[MempoolInclusionStatus, Optional[Err]]:

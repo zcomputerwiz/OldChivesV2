@@ -1,20 +1,20 @@
 from pathlib import Path
 from typing import Dict, List, Optional, Any, Tuple
 
-from replaceme.pools.pool_wallet_info import PoolWalletInfo
-from replaceme.rpc.rpc_client import RpcClient
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.util.bech32m import decode_puzzle_hash
-from replaceme.util.ints import uint32, uint64
-from replaceme.wallet.transaction_record import TransactionRecord
+from chives.pools.pool_wallet_info import PoolWalletInfo
+from chives.rpc.rpc_client import RpcClient
+from chives.types.blockchain_format.coin import Coin
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.util.bech32m import decode_puzzle_hash
+from chives.util.ints import uint32, uint64
+from chives.wallet.transaction_record import TransactionRecord
 
 
 class WalletRpcClient(RpcClient):
     """
-    Client to Replaceme RPC, connects to a local wallet. Uses HTTP/JSON, and converts back from
+    Client to Chives RPC, connects to a local wallet. Uses HTTP/JSON, and converts back from
     JSON into native python objects before returning. All api calls use POST requests.
-    Note that this is not the same as the peer protocol, or wallet protocol (which run Replaceme's
+    Note that this is not the same as the peer protocol, or wallet protocol (which run Chives's
     protocol on top of TCP), it's a separate protocol on top of HTTP that provides easy access
     to the full node.
     """
@@ -24,7 +24,7 @@ class WalletRpcClient(RpcClient):
         try:
             return await self.fetch(
                 "log_in",
-                {"host": "https://backup.replaceme.net", "fingerprint": fingerprint, "type": "start"},
+                {"host": "https://backup.chives.net", "fingerprint": fingerprint, "type": "start"},
             )
 
         except ValueError as e:
@@ -35,7 +35,7 @@ class WalletRpcClient(RpcClient):
             return await self.fetch(
                 "log_in",
                 {
-                    "host": "https://backup.replaceme.net",
+                    "host": "https://backup.chives.net",
                     "fingerprint": fingerprint,
                     "type": "restore_backup",
                     "file_path": file_path,
@@ -48,7 +48,7 @@ class WalletRpcClient(RpcClient):
         try:
             return await self.fetch(
                 "log_in",
-                {"host": "https://backup.replaceme.net", "fingerprint": fingerprint, "type": "skip"},
+                {"host": "https://backup.chives.net", "fingerprint": fingerprint, "type": "skip"},
             )
         except ValueError as e:
             return e.args[0]

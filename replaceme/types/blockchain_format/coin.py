@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import Any, List
 
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.util.clvm import int_to_bytes
-from replaceme.util.hash import std_hash
-from replaceme.util.ints import uint64
-from replaceme.util.streamable import Streamable, streamable
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.util.clvm import int_to_bytes
+from chives.util.hash import std_hash
+from chives.util.ints import uint64
+from chives.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

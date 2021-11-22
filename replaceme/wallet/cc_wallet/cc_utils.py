@@ -3,15 +3,15 @@ from typing import List, Optional, Tuple
 
 from blspy import AugSchemeMPL, G2Element
 
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.types.blockchain_format.program import Program, INFINITE_COST
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.types.condition_opcodes import ConditionOpcode
-from replaceme.types.spend_bundle import CoinSpend, SpendBundle
-from replaceme.util.condition_tools import conditions_dict_for_solution
-from replaceme.util.ints import uint64
-from replaceme.wallet.puzzles.cc_loader import CC_MOD, LOCK_INNER_PUZZLE
-from replaceme.wallet.puzzles.genesis_by_coin_id_with_0 import (
+from chives.types.blockchain_format.coin import Coin
+from chives.types.blockchain_format.program import Program, INFINITE_COST
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.types.condition_opcodes import ConditionOpcode
+from chives.types.spend_bundle import CoinSpend, SpendBundle
+from chives.util.condition_tools import conditions_dict_for_solution
+from chives.util.ints import uint64
+from chives.wallet.puzzles.cc_loader import CC_MOD, LOCK_INNER_PUZZLE
+from chives.wallet.puzzles.genesis_by_coin_id_with_0 import (
     genesis_coin_id_for_genesis_coin_checker,
     lineage_proof_for_coin,
     lineage_proof_for_genesis,

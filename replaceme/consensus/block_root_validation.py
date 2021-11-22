@@ -1,9 +1,9 @@
 from typing import Dict, List, Optional
 
-from replaceme.types.blockchain_format.coin import Coin, hash_coin_list
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.util.errors import Err
-from replaceme.util.merkle_set import MerkleSet
+from chives.types.blockchain_format.coin import Coin, hash_coin_list
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.util.errors import Err
+from chives.util.merkle_set import MerkleSet
 
 
 def validate_block_merkle_roots(

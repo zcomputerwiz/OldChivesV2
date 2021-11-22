@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from replaceme.protocols.wallet_protocol import CoinState
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.util.ints import uint32, uint64
-from replaceme.util.streamable import Streamable, streamable
+from chives.protocols.wallet_protocol import CoinState
+from chives.types.blockchain_format.coin import Coin
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.util.ints import uint32, uint64
+from chives.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

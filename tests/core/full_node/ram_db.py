@@ -2,12 +2,12 @@ from typing import Tuple
 
 import aiosqlite
 
-from replaceme.consensus.blockchain import Blockchain
-from replaceme.consensus.constants import ConsensusConstants
-from replaceme.full_node.block_store import BlockStore
-from replaceme.full_node.coin_store import CoinStore
-from replaceme.full_node.hint_store import HintStore
-from replaceme.util.db_wrapper import DBWrapper
+from chives.consensus.blockchain import Blockchain
+from chives.consensus.constants import ConsensusConstants
+from chives.full_node.block_store import BlockStore
+from chives.full_node.coin_store import CoinStore
+from chives.full_node.hint_store import HintStore
+from chives.util.db_wrapper import DBWrapper
 
 
 async def create_ram_blockchain(consensus_constants: ConsensusConstants) -> Tuple[aiosqlite.Connection, Blockchain]:

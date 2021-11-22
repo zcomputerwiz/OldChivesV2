@@ -4,11 +4,11 @@ from secrets import token_bytes
 import aiosqlite
 import pytest
 
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.util.db_wrapper import DBWrapper
-from replaceme.util.ints import uint64
+from chives.types.blockchain_format.coin import Coin
+from chives.util.db_wrapper import DBWrapper
+from chives.util.ints import uint64
 
-from replaceme.wallet.wallet_interested_store import WalletInterestedStore
+from chives.wallet.wallet_interested_store import WalletInterestedStore
 
 
 @pytest.fixture(scope="module")

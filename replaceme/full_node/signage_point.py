@@ -1,8 +1,8 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from replaceme.types.blockchain_format.vdf import VDFInfo, VDFProof
-from replaceme.util.streamable import Streamable, streamable
+from chives.types.blockchain_format.vdf import VDFInfo, VDFProof
+from chives.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

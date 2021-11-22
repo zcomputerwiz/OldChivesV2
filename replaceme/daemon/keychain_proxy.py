@@ -2,24 +2,24 @@ import logging
 import ssl
 
 from blspy import AugSchemeMPL, PrivateKey
-from replaceme.cmds.init_funcs import check_keys
-from replaceme.daemon.client import DaemonProxy
-from replaceme.daemon.keychain_server import (
+from chives.cmds.init_funcs import check_keys
+from chives.daemon.client import DaemonProxy
+from chives.daemon.keychain_server import (
     KEYCHAIN_ERR_KEYERROR,
     KEYCHAIN_ERR_LOCKED,
     KEYCHAIN_ERR_MALFORMED_REQUEST,
     KEYCHAIN_ERR_NO_KEYS,
 )
-from replaceme.server.server import ssl_context_for_client
-from replaceme.util.config import load_config
-from replaceme.util.keychain import (
+from chives.server.server import ssl_context_for_client
+from chives.util.config import load_config
+from chives.util.keychain import (
     Keychain,
     KeyringIsLocked,
     bytes_to_mnemonic,
     mnemonic_to_seed,
     supports_keyring_passphrase,
 )
-from replaceme.util.ws_message import WsRpcMessage
+from chives.util.ws_message import WsRpcMessage
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 

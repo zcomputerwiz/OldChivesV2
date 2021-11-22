@@ -1,14 +1,14 @@
 from dataclasses import dataclass
 from typing import List, Optional, Tuple
 
-from replaceme.types.blockchain_format.foliage import Foliage
-from replaceme.types.blockchain_format.reward_chain_block import RewardChainBlock, RewardChainBlockUnfinished
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from replaceme.types.blockchain_format.vdf import VDFInfo, VDFProof
-from replaceme.types.end_of_slot_bundle import EndOfSubSlotBundle
-from replaceme.util.ints import uint8, uint32, uint64, uint128
-from replaceme.util.streamable import Streamable, streamable
+from chives.types.blockchain_format.foliage import Foliage
+from chives.types.blockchain_format.reward_chain_block import RewardChainBlock, RewardChainBlockUnfinished
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from chives.types.blockchain_format.vdf import VDFInfo, VDFProof
+from chives.types.end_of_slot_bundle import EndOfSubSlotBundle
+from chives.util.ints import uint8, uint32, uint64, uint128
+from chives.util.streamable import Streamable, streamable
 
 """
 Protocol between timelord and full node.

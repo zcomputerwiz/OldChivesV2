@@ -1,9 +1,9 @@
 from dataclasses import dataclass
 from typing import List
 
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.types.header_block import HeaderBlock
-from replaceme.util.streamable import Streamable, streamable
+from chives.types.blockchain_format.coin import Coin
+from chives.types.header_block import HeaderBlock
+from chives.util.streamable import Streamable, streamable
 
 
 @dataclass(frozen=True)

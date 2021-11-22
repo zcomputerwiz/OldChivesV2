@@ -6,11 +6,11 @@ from bitstring import BitArray
 from blspy import G1Element, AugSchemeMPL, PrivateKey
 from chiapos import Verifier
 
-from replaceme.consensus.constants import ConsensusConstants
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.util.hash import std_hash
-from replaceme.util.ints import uint8
-from replaceme.util.streamable import Streamable, streamable
+from chives.consensus.constants import ConsensusConstants
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.util.hash import std_hash
+from chives.util.ints import uint8
+from chives.util.streamable import Streamable, streamable
 
 log = logging.getLogger(__name__)
 

@@ -2,9 +2,9 @@ from typing import Any
 
 import aiosqlite
 
-from replaceme.util.byte_types import hexstr_to_bytes
-from replaceme.util.db_wrapper import DBWrapper
-from replaceme.util.streamable import Streamable
+from chives.util.byte_types import hexstr_to_bytes
+from chives.util.db_wrapper import DBWrapper
+from chives.util.streamable import Streamable
 
 
 class KeyValStore:

@@ -7,11 +7,11 @@ from functools import lru_cache
 
 from chiavdf import create_discriminant, verify_n_wesolowski
 
-from replaceme.consensus.constants import ConsensusConstants
-from replaceme.types.blockchain_format.classgroup import ClassgroupElement
-from replaceme.types.blockchain_format.sized_bytes import bytes32, bytes100
-from replaceme.util.ints import uint8, uint64
-from replaceme.util.streamable import Streamable, streamable
+from chives.consensus.constants import ConsensusConstants
+from chives.types.blockchain_format.classgroup import ClassgroupElement
+from chives.types.blockchain_format.sized_bytes import bytes32, bytes100
+from chives.util.ints import uint8, uint64
+from chives.util.streamable import Streamable, streamable
 
 log = logging.getLogger(__name__)
 

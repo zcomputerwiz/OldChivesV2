@@ -4,27 +4,27 @@ import logging
 import time
 from typing import Dict, List, Optional, Set, Tuple
 
-from replaceme.consensus.block_record import BlockRecord
-from replaceme.consensus.blockchain_interface import BlockchainInterface
-from replaceme.consensus.constants import ConsensusConstants
-from replaceme.consensus.difficulty_adjustment import can_finish_sub_and_full_epoch
-from replaceme.consensus.make_sub_epoch_summary import next_sub_epoch_summary
-from replaceme.consensus.multiprocess_validation import PreValidationResult
-from replaceme.consensus.pot_iterations import calculate_sp_interval_iters
-from replaceme.full_node.signage_point import SignagePoint
-from replaceme.protocols import timelord_protocol
-from replaceme.server.outbound_message import Message
-from replaceme.types.blockchain_format.classgroup import ClassgroupElement
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from replaceme.types.blockchain_format.vdf import VDFInfo
-from replaceme.types.end_of_slot_bundle import EndOfSubSlotBundle
-from replaceme.types.full_block import FullBlock
-from replaceme.types.generator_types import CompressorArg
-from replaceme.types.unfinished_block import UnfinishedBlock
-from replaceme.util.ints import uint8, uint32, uint64, uint128
-from replaceme.util.lru_cache import LRUCache
-from replaceme.util.streamable import Streamable, streamable
+from chives.consensus.block_record import BlockRecord
+from chives.consensus.blockchain_interface import BlockchainInterface
+from chives.consensus.constants import ConsensusConstants
+from chives.consensus.difficulty_adjustment import can_finish_sub_and_full_epoch
+from chives.consensus.make_sub_epoch_summary import next_sub_epoch_summary
+from chives.consensus.multiprocess_validation import PreValidationResult
+from chives.consensus.pot_iterations import calculate_sp_interval_iters
+from chives.full_node.signage_point import SignagePoint
+from chives.protocols import timelord_protocol
+from chives.server.outbound_message import Message
+from chives.types.blockchain_format.classgroup import ClassgroupElement
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from chives.types.blockchain_format.vdf import VDFInfo
+from chives.types.end_of_slot_bundle import EndOfSubSlotBundle
+from chives.types.full_block import FullBlock
+from chives.types.generator_types import CompressorArg
+from chives.types.unfinished_block import UnfinishedBlock
+from chives.util.ints import uint8, uint32, uint64, uint128
+from chives.util.lru_cache import LRUCache
+from chives.util.streamable import Streamable, streamable
 
 log = logging.getLogger(__name__)
 

@@ -2,8 +2,8 @@ import asyncio
 
 import pytest
 
-from replaceme.full_node.sync_store import SyncStore
-from replaceme.util.hash import std_hash
+from chives.full_node.sync_store import SyncStore
+from chives.util.hash import std_hash
 
 
 @pytest.fixture(scope="module")

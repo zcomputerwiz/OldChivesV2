@@ -4,14 +4,14 @@ from secrets import token_bytes
 from blspy import AugSchemeMPL, PrivateKey
 from clvm_tools import binutils
 
-from replaceme.consensus.default_constants import DEFAULT_CONSTANTS
-from replaceme.types.blockchain_format.program import Program, INFINITE_COST
-from replaceme.types.condition_opcodes import ConditionOpcode
-from replaceme.types.condition_with_args import ConditionWithArgs
-from replaceme.util.ints import uint32
+from chives.consensus.default_constants import DEFAULT_CONSTANTS
+from chives.types.blockchain_format.program import Program, INFINITE_COST
+from chives.types.condition_opcodes import ConditionOpcode
+from chives.types.condition_with_args import ConditionWithArgs
+from chives.util.ints import uint32
 from tests.wallet_tools import WalletTool
-from replaceme.wallet.derive_keys import master_sk_to_wallet_sk
-from replaceme.wallet.puzzles.p2_delegated_puzzle import puzzle_for_pk
+from chives.wallet.derive_keys import master_sk_to_wallet_sk
+from chives.wallet.puzzles.p2_delegated_puzzle import puzzle_for_pk
 
 
 def float_to_str(f):

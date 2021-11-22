@@ -6,26 +6,26 @@ from typing import Any, Callable, Dict, List, Optional
 
 from aiohttp import WSCloseCode, WSMessage, WSMsgType
 
-from replaceme.cmds.init_funcs import replaceme_full_version_str
-from replaceme.protocols.protocol_message_types import ProtocolMessageTypes
-from replaceme.protocols.protocol_state_machine import message_response_ok
-from replaceme.protocols.protocol_timing import INTERNAL_PROTOCOL_ERROR_BAN_SECONDS
-from replaceme.protocols.shared_protocol import Capability, Handshake
-from replaceme.server.outbound_message import Message, NodeType, make_msg
-from replaceme.server.rate_limits import RateLimiter
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.types.peer_info import PeerInfo
-from replaceme.util.errors import Err, ProtocolError
-from replaceme.util.ints import uint8, uint16
+from chives.cmds.init_funcs import chives_full_version_str
+from chives.protocols.protocol_message_types import ProtocolMessageTypes
+from chives.protocols.protocol_state_machine import message_response_ok
+from chives.protocols.protocol_timing import INTERNAL_PROTOCOL_ERROR_BAN_SECONDS
+from chives.protocols.shared_protocol import Capability, Handshake
+from chives.server.outbound_message import Message, NodeType, make_msg
+from chives.server.rate_limits import RateLimiter
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.types.peer_info import PeerInfo
+from chives.util.errors import Err, ProtocolError
+from chives.util.ints import uint8, uint16
 
 # Each message is prepended with LENGTH_BYTES bytes specifying the length
-from replaceme.util.network import class_for_type, is_localhost
+from chives.util.network import class_for_type, is_localhost
 
 # Max size 2^(8*4) which is around 4GiB
 LENGTH_BYTES: int = 4
 
 
-class WSReplacemeConnection:
+class WSChivesConnection:
     """
     Represents a connection to another node. Local host and port are ours, while peer host and
     port are the host and port of the peer that we are connected to. Node_id and connection_type are
@@ -71,7 +71,7 @@ class WSReplacemeConnection:
         self.is_outbound = is_outbound
         self.is_feeler = is_feeler
 
-        # ReplacemeConnection metrics
+        # ChivesConnection metrics
         self.creation_time = time.time()
         self.bytes_read = 0
         self.bytes_written = 0
@@ -115,7 +115,7 @@ class WSReplacemeConnection:
                 Handshake(
                     network_id,
                     protocol_version,
-                    replaceme_full_version_str(),
+                    chives_full_version_str(),
                     uint16(server_port),
                     uint8(local_type.value),
                     [(uint16(Capability.BASE.value), "1")],
@@ -171,7 +171,7 @@ class WSReplacemeConnection:
                 Handshake(
                     network_id,
                     protocol_version,
-                    replaceme_full_version_str(),
+                    chives_full_version_str(),
                     uint16(server_port),
                     uint8(local_type.value),
                     [(uint16(Capability.BASE.value), "1")],

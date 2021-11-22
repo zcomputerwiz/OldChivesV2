@@ -1,14 +1,14 @@
 import asyncio
 import pytest
-from replaceme.simulator.simulator_protocol import FarmNewBlockProtocol
-from replaceme.types.peer_info import PeerInfo
-from replaceme.util.ints import uint16, uint32, uint64
+from chives.simulator.simulator_protocol import FarmNewBlockProtocol
+from chives.types.peer_info import PeerInfo
+from chives.util.ints import uint16, uint32, uint64
 from tests.setup_nodes import setup_simulators_and_wallets
-from replaceme.wallet.did_wallet.did_wallet import DIDWallet
-from replaceme.types.blockchain_format.program import Program
+from chives.wallet.did_wallet.did_wallet import DIDWallet
+from chives.types.blockchain_format.program import Program
 from blspy import AugSchemeMPL
-from replaceme.types.spend_bundle import SpendBundle
-from replaceme.consensus.block_rewards import calculate_pool_reward, calculate_base_farmer_reward
+from chives.types.spend_bundle import SpendBundle
+from chives.consensus.block_rewards import calculate_pool_reward, calculate_base_farmer_reward
 from tests.time_out_assert import time_out_assert
 
 pytestmark = pytest.mark.skip("TODO: Fix tests")

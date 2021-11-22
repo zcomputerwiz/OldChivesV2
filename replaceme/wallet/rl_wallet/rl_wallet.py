@@ -8,17 +8,17 @@ from typing import Any, List, Optional, Tuple
 
 from blspy import AugSchemeMPL, G1Element, PrivateKey
 
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.types.blockchain_format.program import Program
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.types.coin_spend import CoinSpend
-from replaceme.types.spend_bundle import SpendBundle
-from replaceme.util.byte_types import hexstr_to_bytes
-from replaceme.util.ints import uint8, uint32, uint64, uint128
-from replaceme.util.streamable import Streamable, streamable
-from replaceme.wallet.derivation_record import DerivationRecord
-from replaceme.wallet.derive_keys import master_sk_to_wallet_sk
-from replaceme.wallet.rl_wallet.rl_wallet_puzzles import (
+from chives.types.blockchain_format.coin import Coin
+from chives.types.blockchain_format.program import Program
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.types.coin_spend import CoinSpend
+from chives.types.spend_bundle import SpendBundle
+from chives.util.byte_types import hexstr_to_bytes
+from chives.util.ints import uint8, uint32, uint64, uint128
+from chives.util.streamable import Streamable, streamable
+from chives.wallet.derivation_record import DerivationRecord
+from chives.wallet.derive_keys import master_sk_to_wallet_sk
+from chives.wallet.rl_wallet.rl_wallet_puzzles import (
     make_clawback_solution,
     rl_make_aggregation_puzzle,
     rl_make_aggregation_solution,
@@ -26,12 +26,12 @@ from replaceme.wallet.rl_wallet.rl_wallet_puzzles import (
     rl_puzzle_for_pk,
     solution_for_rl,
 )
-from replaceme.wallet.transaction_record import TransactionRecord
-from replaceme.wallet.util.transaction_type import TransactionType
-from replaceme.wallet.util.wallet_types import WalletType
-from replaceme.wallet.wallet import Wallet
-from replaceme.wallet.wallet_coin_record import WalletCoinRecord
-from replaceme.wallet.wallet_info import WalletInfo
+from chives.wallet.transaction_record import TransactionRecord
+from chives.wallet.util.transaction_type import TransactionType
+from chives.wallet.util.wallet_types import WalletType
+from chives.wallet.wallet import Wallet
+from chives.wallet.wallet_coin_record import WalletCoinRecord
+from chives.wallet.wallet_info import WalletInfo
 
 
 @dataclass(frozen=True)

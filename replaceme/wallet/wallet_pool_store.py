@@ -3,9 +3,9 @@ from typing import List, Tuple, Dict, Optional
 
 import aiosqlite
 
-from replaceme.types.coin_spend import CoinSpend
-from replaceme.util.db_wrapper import DBWrapper
-from replaceme.util.ints import uint32
+from chives.types.coin_spend import CoinSpend
+from chives.util.db_wrapper import DBWrapper
+from chives.util.ints import uint32
 
 log = logging.getLogger(__name__)
 

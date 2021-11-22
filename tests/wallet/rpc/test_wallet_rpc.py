@@ -1,23 +1,23 @@
 import asyncio
-from replaceme.util.config import load_config, save_config
+from chives.util.config import load_config, save_config
 import logging
 from pathlib import Path
 
 import pytest
 
-from replaceme.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
-from replaceme.rpc.full_node_rpc_api import FullNodeRpcApi
-from replaceme.rpc.full_node_rpc_client import FullNodeRpcClient
-from replaceme.rpc.rpc_server import start_rpc_server
-from replaceme.rpc.wallet_rpc_api import WalletRpcApi
-from replaceme.rpc.wallet_rpc_client import WalletRpcClient
-from replaceme.simulator.simulator_protocol import FarmNewBlockProtocol
-from replaceme.types.peer_info import PeerInfo
-from replaceme.util.bech32m import encode_puzzle_hash
-from replaceme.consensus.coinbase import create_puzzlehash_for_pk
-from replaceme.wallet.derive_keys import master_sk_to_wallet_sk
-from replaceme.util.ints import uint16, uint32
-from replaceme.wallet.transaction_record import TransactionRecord
+from chives.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from chives.rpc.full_node_rpc_api import FullNodeRpcApi
+from chives.rpc.full_node_rpc_client import FullNodeRpcClient
+from chives.rpc.rpc_server import start_rpc_server
+from chives.rpc.wallet_rpc_api import WalletRpcApi
+from chives.rpc.wallet_rpc_client import WalletRpcClient
+from chives.simulator.simulator_protocol import FarmNewBlockProtocol
+from chives.types.peer_info import PeerInfo
+from chives.util.bech32m import encode_puzzle_hash
+from chives.consensus.coinbase import create_puzzlehash_for_pk
+from chives.wallet.derive_keys import master_sk_to_wallet_sk
+from chives.util.ints import uint16, uint32
+from chives.wallet.transaction_record import TransactionRecord
 from tests.setup_nodes import bt, setup_simulators_and_wallets, self_hostname
 from tests.time_out_assert import time_out_assert
 

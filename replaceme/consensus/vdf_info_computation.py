@@ -1,12 +1,12 @@
 from typing import List, Optional
 
-from replaceme.consensus.block_record import BlockRecord
-from replaceme.consensus.blockchain_interface import BlockchainInterface
-from replaceme.consensus.constants import ConsensusConstants
-from replaceme.types.blockchain_format.classgroup import ClassgroupElement
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.types.end_of_slot_bundle import EndOfSubSlotBundle
-from replaceme.util.ints import uint64, uint128
+from chives.consensus.block_record import BlockRecord
+from chives.consensus.blockchain_interface import BlockchainInterface
+from chives.consensus.constants import ConsensusConstants
+from chives.types.blockchain_format.classgroup import ClassgroupElement
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.types.end_of_slot_bundle import EndOfSubSlotBundle
+from chives.util.ints import uint64, uint128
 
 
 def get_signage_point_vdf_info(
