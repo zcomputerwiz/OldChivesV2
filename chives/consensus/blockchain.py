@@ -183,7 +183,7 @@ class Blockchain(BlockchainInterface):
         Optional[uint32],
         Tuple[List[CoinRecord], Dict[bytes, Dict[bytes32, CoinRecord]]],
     ]:
-        """
+            """
         This method must be called under the blockchain lock
         Adds a new block into the blockchain, if it's valid and connected to the current
         blockchain, regardless of whether it is the child of a head, or another block.
@@ -610,6 +610,7 @@ class Blockchain(BlockchainInterface):
             else self.block_record(block.prev_header_hash).height
         )
 
+
         error_code, cost_result = await validate_block_body(
             self.constants,
             self,
@@ -934,3 +935,4 @@ class Blockchain(BlockchainInterface):
                     result.append(GeneratorArg(ref_block.height, ref_block.transactions_generator))
         assert len(result) == len(ref_list)
         return BlockGenerator(block.transactions_generator, result)
+        
