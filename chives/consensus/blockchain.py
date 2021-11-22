@@ -935,4 +935,3 @@ class Blockchain(BlockchainInterface):
                     result.append(GeneratorArg(ref_block.height, ref_block.transactions_generator))
         assert len(result) == len(ref_list)
         return BlockGenerator(block.transactions_generator, result)
-        
