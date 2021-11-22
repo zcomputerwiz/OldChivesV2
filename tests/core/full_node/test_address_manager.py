@@ -242,7 +242,7 @@ class TestPeerManager:
         assert await addrman.size() == 0
 
         peer1 = PeerInfo("250.1.2.1", 8444)
-        t_peer = TimestampedPeerInfo("250.1.2.1", 8444, 0)
+        t_peer = TimestampedPeerInfo("250.1.2.1", 9699, 0)
         info, node_id = addrman.create_(t_peer, peer1)
         assert info.peer_info == peer1
         info, _ = addrman.find_(peer1)
@@ -254,7 +254,7 @@ class TestPeerManager:
         assert await addrman.size() == 0
 
         peer1 = PeerInfo("250.1.2.1", 8444)
-        t_peer = TimestampedPeerInfo("250.1.2.1", 8444, 0)
+        t_peer = TimestampedPeerInfo("250.1.2.1", 9699, 0)
         info, node_id = addrman.create_(t_peer, peer1)
 
         # Test: Delete should actually delete the addr.
@@ -271,11 +271,11 @@ class TestPeerManager:
         peers1 = await addrman.get_peers()
         assert len(peers1) == 0
 
-        peer1 = TimestampedPeerInfo("250.250.2.1", 8444, time.time())
+        peer1 = TimestampedPeerInfo("250.250.2.1", 9699, time.time())
         peer2 = TimestampedPeerInfo("250.250.2.2", 9999, time.time())
-        peer3 = TimestampedPeerInfo("251.252.2.3", 8444, time.time())
-        peer4 = TimestampedPeerInfo("251.252.2.4", 8444, time.time())
-        peer5 = TimestampedPeerInfo("251.252.2.5", 8444, time.time())
+        peer3 = TimestampedPeerInfo("251.252.2.3", 9699, time.time())
+        peer4 = TimestampedPeerInfo("251.252.2.4", 9699, time.time())
+        peer5 = TimestampedPeerInfo("251.252.2.5", 9699, time.time())
         source1 = PeerInfo("250.1.2.1", 8444)
         source2 = PeerInfo("250.2.3.3", 8444)
 
@@ -300,7 +300,7 @@ class TestPeerManager:
         for i in range(1, 8 * 256):
             octet1 = i % 256
             octet2 = i >> 8 % 256
-            peer = TimestampedPeerInfo(str(octet1) + "." + str(octet2) + ".1.23", 8444, time.time())
+            peer = TimestampedPeerInfo(str(octet1) + "." + str(octet2) + ".1.23", 9699, time.time())
             await addrman.add_to_new_table([peer])
             if i % 8 == 0:
                 await addrman.mark_good(PeerInfo(peer.host, peer.port))
@@ -313,7 +313,7 @@ class TestPeerManager:
     @pytest.mark.asyncio
     async def test_addrman_tried_bucket(self):
         peer1 = PeerInfo("250.1.1.1", 8444)
-        t_peer1 = TimestampedPeerInfo("250.1.1.1", 8444, 0)
+        t_peer1 = TimestampedPeerInfo("250.1.1.1", 9699, 0)
         peer2 = PeerInfo("250.1.1.1", 9999)
         t_peer2 = TimestampedPeerInfo("250.1.1.1", 9999, 0)
         source1 = PeerInfo("250.1.1.1", 8444)
@@ -337,7 +337,7 @@ class TestPeerManager:
         buckets = []
         for i in range(255):
             peer = PeerInfo("250.1.1." + str(i), 8444)
-            t_peer = TimestampedPeerInfo("250.1.1." + str(i), 8444, 0)
+            t_peer = TimestampedPeerInfo("250.1.1." + str(i), 9699, 0)
             extended_peer_info = ExtendedPeerInfo(t_peer, peer)
             bucket = extended_peer_info.get_tried_bucket(key1)
             if bucket not in buckets:
@@ -350,7 +350,7 @@ class TestPeerManager:
         buckets = []
         for i in range(255):
             peer = PeerInfo("250." + str(i) + ".1.1", 8444)
-            t_peer = TimestampedPeerInfo("250." + str(i) + ".1.1", 8444, 0)
+            t_peer = TimestampedPeerInfo("250." + str(i) + ".1.1", 9699, 0)
             extended_peer_info = ExtendedPeerInfo(t_peer, peer)
             bucket = extended_peer_info.get_tried_bucket(key1)
             if bucket not in buckets:
@@ -359,7 +359,7 @@ class TestPeerManager:
 
     @pytest.mark.asyncio
     async def test_addrman_new_bucket(self):
-        t_peer1 = TimestampedPeerInfo("250.1.2.1", 8444, 0)
+        t_peer1 = TimestampedPeerInfo("250.1.2.1", 9699, 0)
         source1 = PeerInfo("250.1.2.1", 8444)
         t_peer2 = TimestampedPeerInfo("250.1.2.1", 9999, 0)
         peer_info1 = ExtendedPeerInfo(t_peer1, source1)
@@ -380,7 +380,7 @@ class TestPeerManager:
         buckets = []
         for i in range(255):
             peer = PeerInfo("250.1.1." + str(i), 8444)
-            t_peer = TimestampedPeerInfo("250.1.1." + str(i), 8444, 0)
+            t_peer = TimestampedPeerInfo("250.1.1." + str(i), 9699, 0)
             extended_peer_info = ExtendedPeerInfo(t_peer, peer)
             bucket = extended_peer_info.get_new_bucket(key1)
             if bucket not in buckets:
@@ -393,7 +393,7 @@ class TestPeerManager:
         for i in range(4 * 255):
             src = PeerInfo("251.4.1.1", 8444)
             peer = PeerInfo(str(250 + i // 255) + "." + str(i % 256) + ".1.1", 8444)
-            t_peer = TimestampedPeerInfo(str(250 + i // 255) + "." + str(i % 256) + ".1.1", 8444, 0)
+            t_peer = TimestampedPeerInfo(str(250 + i // 255) + "." + str(i % 256) + ".1.1", 9699, 0)
             extended_peer_info = ExtendedPeerInfo(t_peer, src)
             bucket = extended_peer_info.get_new_bucket(key1)
             if bucket not in buckets:
@@ -406,7 +406,7 @@ class TestPeerManager:
         for i in range(255):
             src = PeerInfo("250." + str(i) + ".1.1", 8444)
             peer = PeerInfo("250.1.1.1", 8444)
-            t_peer = TimestampedPeerInfo("250.1.1.1", 8444, 0)
+            t_peer = TimestampedPeerInfo("250.1.1.1", 9699, 0)
             extended_peer_info = ExtendedPeerInfo(t_peer, src)
             bucket = extended_peer_info.get_new_bucket(key1)
             if bucket not in buckets:
@@ -581,7 +581,7 @@ class TestPeerManager:
     @pytest.mark.asyncio
     async def test_cleanup(self):
         addrman = AddressManagerTest()
-        peer1 = TimestampedPeerInfo("250.250.2.1", 8444, 100000)
+        peer1 = TimestampedPeerInfo("250.250.2.1", 9699, 100000)
         peer2 = TimestampedPeerInfo("250.250.2.2", 9999, time.time())
         source = PeerInfo("252.5.1.1", 8333)
         assert await addrman.add_to_new_table([peer1], source)
