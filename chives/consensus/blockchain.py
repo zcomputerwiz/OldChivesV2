@@ -183,7 +183,7 @@ class Blockchain(BlockchainInterface):
         Optional[uint32],
         Tuple[List[CoinRecord], Dict[bytes, Dict[bytes32, CoinRecord]]],
     ]:
-            """
+        """
         This method must be called under the blockchain lock
         Adds a new block into the blockchain, if it's valid and connected to the current
         blockchain, regardless of whether it is the child of a head, or another block.
