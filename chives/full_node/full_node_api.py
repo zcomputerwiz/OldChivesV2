@@ -166,10 +166,9 @@ class FullNodeAPI:
                 counter = 0
                 try:
                     while True:
-                        # Limit to asking to a few peers, it's possible that this tx got included on chain already
-                        # Highly unlikely that the peers that advertised a tx don't respond to a request. Also, if we
-                        # drop some transactions, we don't want to refetch too many times
-                        if counter == 5:
+                        # Limit to asking 10 peers, it's possible that this tx got included on chain already
+                        # Highly unlikely 10 peers that advertised a tx don't respond to a request
+                        if counter == 10:
                             break
                         if transaction_id not in full_node.full_node_store.peers_with_tx:
                             break
@@ -835,14 +834,17 @@ class FullNodeAPI:
             except ValueError as e:
                 self.log.warning(f"Value Error: {e}")
                 return None
+            
             if prev_b is None:
                 pool_target = PoolTarget(
                     self.full_node.constants.GENESIS_PRE_FARM_POOL_PUZZLE_HASH,
                     uint32(0),
                 )
                 farmer_ph = self.full_node.constants.GENESIS_PRE_FARM_FARMER_PUZZLE_HASH
+                community_ph = self.full_node.constants.GENESIS_PRE_FARM_COMMUNITY_PUZZLE_HASH
             else:
                 farmer_ph = request.farmer_puzzle_hash
+                community_ph = self.full_node.constants.GENESIS_PRE_FARM_COMMUNITY_PUZZLE_HASH
                 if request.proof_of_space.pool_contract_puzzle_hash is not None:
                     pool_target = PoolTarget(request.proof_of_space.pool_contract_puzzle_hash, uint32(0))
                 else:
@@ -897,6 +899,7 @@ class FullNodeAPI:
                 request.proof_of_space,
                 cc_challenge_hash,
                 farmer_ph,
+                community_ph,
                 pool_target,
                 get_plot_sig,
                 get_pool_sig,
@@ -943,6 +946,7 @@ class FullNodeAPI:
                     request.proof_of_space,
                     cc_challenge_hash,
                     farmer_ph,
+                    community_ph,
                     pool_target,
                     get_plot_sig,
                     get_pool_sig,
@@ -1006,6 +1010,8 @@ class FullNodeAPI:
 
         # Propagate to ourselves (which validates and does further propagations)
         request = full_node_protocol.RespondUnfinishedBlock(new_candidate)
+        # self.log.warning("########################################################")
+        # self.log.warning(request)
         try:
             await self.full_node.respond_unfinished_block(request, None, True)
         except Exception as e:
@@ -1090,7 +1096,7 @@ class FullNodeAPI:
             return msg
         block: Optional[FullBlock] = await self.full_node.block_store.get_full_block(header_hash)
         if block is not None:
-            tx_removals, tx_additions, _ = await self.full_node.blockchain.get_tx_removals_and_additions(block)
+            tx_removals, tx_additions = await self.full_node.blockchain.get_tx_removals_and_additions(block)
             header_block = get_block_header(block, tx_additions, tx_removals)
             msg = make_msg(
                 ProtocolMessageTypes.respond_block_header,
