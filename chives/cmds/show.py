@@ -50,8 +50,17 @@ async def show_async(
             total_iters = peak.total_iters if peak is not None else 0
             num_blocks: int = 10
 
+            if sync_mode:
+                sync_max_block = blockchain_state["sync"]["sync_tip_height"]
+                sync_current_block = blockchain_state["sync"]["sync_progress_height"]
+                print(
+                    "**********************************************\nCurrent Blockchain Status: Full Node syncing to block",
+                    sync_max_block,
+                    "\nCurrently synced to block:",
+                    sync_current_block,
+                )
             if synced:
-                print("Current Blockchain Status: Full Node Synced")
+                print("#############################################\nCurrent Blockchain Status: Full Node Synced")
                 print("\nPeak: Hash:", peak.header_hash if peak is not None else "")
             elif peak is not None and sync_mode:
                 sync_max_block = blockchain_state["sync"]["sync_tip_height"]
@@ -59,9 +68,9 @@ async def show_async(
                 print(f"Current Blockchain Status: Syncing {sync_current_block}/{sync_max_block}.")
                 print("Peak: Hash:", peak.header_hash if peak is not None else "")
             elif peak is not None:
-                print(f"Current Blockchain Status: Not Synced. Peak height: {peak.height}")
+                print(f"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\nCurrent Blockchain Status: Not Synced. Peak height: {peak.height}")
             else:
-                print("\nSearching for an initial chain\n")
+                print("#############################################\nSearching for an initial chain\n")
                 print("You may be able to expedite with 'chives show -a host:port' using a known node.\n")
 
             if peak is not None:
@@ -154,7 +163,7 @@ async def show_async(
             print(node_stop, "Node stopped")
         if add_connection:
             if ":" not in add_connection:
-                print("Enter a valid IP and port in the following format: 10.5.4.3:8000")
+                print("Enter a valid IP and port in the following format: node-us.chivescoin.org:9699")
             else:
                 ip, port = (
                     ":".join(add_connection.split(":")[:-1]),
@@ -223,6 +232,7 @@ async def show_async(
                     fees = "Not a transaction block"
                 address_prefix = config["network_overrides"]["config"][config["selected_network"]]["address_prefix"]
                 farmer_address = encode_puzzle_hash(block.farmer_puzzle_hash, address_prefix)
+                community_address = encode_puzzle_hash(block.community_puzzle_hash, address_prefix)
                 pool_address = encode_puzzle_hash(block.pool_puzzle_hash, address_prefix)
                 pool_pk = (
                     full_block.reward_chain_block.proof_of_space.pool_public_key
@@ -246,6 +256,7 @@ async def show_async(
                     f"Pool Public Key        {pool_pk}\n"
                     f"Tx Filter Hash         {tx_filter_hash}\n"
                     f"Farmer Address         {farmer_address}\n"
+                    f"Community Address      {community_address}\n"
                     f"Pool Address           {pool_address}\n"
                     f"Fees Amount            {fees}\n"
                 )
