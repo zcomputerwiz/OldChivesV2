@@ -2,9 +2,9 @@
 
 import os
 from pathlib import Path
-from replaceme.util.streamable import Streamable, streamable
+from chives.util.streamable import Streamable, streamable
 from tests.util.network_protocol_data import *
-from replaceme.util.ints import uint32
+from chives.util.ints import uint32
 
 version = "1.0"
 

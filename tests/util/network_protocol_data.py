@@ -1,33 +1,33 @@
 # flake8: noqa
 
-from replaceme.types.blockchain_format.sized_bytes import bytes32
-from replaceme.util.ints import uint8, uint16, uint32, uint64, uint128
-from replaceme.types.blockchain_format.proof_of_space import ProofOfSpace
-from replaceme.types.blockchain_format.pool_target import PoolTarget
-from replaceme.types.coin_spend import CoinSpend
-from replaceme.types.blockchain_format.coin import Coin
-from replaceme.types.spend_bundle import SpendBundle
-from replaceme.types.blockchain_format.program import Program, SerializedProgram
-from replaceme.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from replaceme.types.weight_proof import WeightProof, SubEpochData, SubEpochChallengeSegment, SubSlotData, RecentChainData
-from replaceme.types.blockchain_format.vdf import VDFInfo, VDFProof
-from replaceme.types.blockchain_format.classgroup import ClassgroupElement
+from chives.types.blockchain_format.sized_bytes import bytes32
+from chives.util.ints import uint8, uint16, uint32, uint64, uint128
+from chives.types.blockchain_format.proof_of_space import ProofOfSpace
+from chives.types.blockchain_format.pool_target import PoolTarget
+from chives.types.coin_spend import CoinSpend
+from chives.types.blockchain_format.coin import Coin
+from chives.types.spend_bundle import SpendBundle
+from chives.types.blockchain_format.program import Program, SerializedProgram
+from chives.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from chives.types.weight_proof import WeightProof, SubEpochData, SubEpochChallengeSegment, SubSlotData, RecentChainData
+from chives.types.blockchain_format.vdf import VDFInfo, VDFProof
+from chives.types.blockchain_format.classgroup import ClassgroupElement
 from blspy import G1Element, G2Element
-from replaceme.types.header_block import HeaderBlock
-from replaceme.types.full_block import FullBlock
-from replaceme.types.unfinished_block import UnfinishedBlock
-from replaceme.types.blockchain_format.slots import (
+from chives.types.header_block import HeaderBlock
+from chives.types.full_block import FullBlock
+from chives.types.unfinished_block import UnfinishedBlock
+from chives.types.blockchain_format.slots import (
     ChallengeChainSubSlot,
     InfusedChallengeChainSubSlot,
     RewardChainSubSlot,
     SubSlotProofs,
 )
-from replaceme.types.end_of_slot_bundle import EndOfSubSlotBundle
-from replaceme.types.peer_info import TimestampedPeerInfo
-from replaceme.types.blockchain_format.reward_chain_block import RewardChainBlock
-from replaceme.types.blockchain_format.foliage import Foliage, FoliageTransactionBlock, FoliageBlockData, TransactionsInfo
+from chives.types.end_of_slot_bundle import EndOfSubSlotBundle
+from chives.types.peer_info import TimestampedPeerInfo
+from chives.types.blockchain_format.reward_chain_block import RewardChainBlock
+from chives.types.blockchain_format.foliage import Foliage, FoliageTransactionBlock, FoliageBlockData, TransactionsInfo
 
-from replaceme.protocols import (
+from chives.protocols import (
     farmer_protocol,
     full_node_protocol,
     harvester_protocol,
