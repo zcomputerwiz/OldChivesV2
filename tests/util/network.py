@@ -1,5 +1,5 @@
 import pytest
-from replaceme.util.network import get_host_addr
+from chives.util.network import get_host_addr
 
 
 class TestNetwork:

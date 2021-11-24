@@ -1,6 +1,6 @@
 from typing import Any, Optional, Union
 
-from replaceme.types.blockchain_format.sized_bytes import bytes32
+from chives.types.blockchain_format.sized_bytes import bytes32
 import click
 
 
