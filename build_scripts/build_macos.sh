@@ -36,9 +36,9 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	echo >&2 "pyinstaller failed!"
 	exit $LAST_EXIT_CODE
 fi
-cp -r dist/daemon ../chia-blockchain-gui
+cp -r dist/daemon ../chives-blockchain-gui
 cd .. || exit
-cd chia-blockchain-gui || exit
+cd chives-blockchain-gui || exit
 
 echo "npm build"
 npm install
@@ -50,7 +50,7 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
-# sets the version for chia-blockchain in package.json
+# sets the version for chives-blockchain in package.json
 brew install jq
 cp package.json package.json.orig
 jq --arg VER "$CHIA_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
