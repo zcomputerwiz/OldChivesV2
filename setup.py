@@ -79,6 +79,7 @@ kwargs = dict(
         "chives.full_node",
         "chives.timelord",
         "chives.farmer",
+        "chives.farmer.pooling",
         "chives.harvester",
         "chives.introducer",
         "chives.plotters",
