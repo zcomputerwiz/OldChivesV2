@@ -1096,7 +1096,7 @@ class FullNodeAPI:
             return msg
         block: Optional[FullBlock] = await self.full_node.block_store.get_full_block(header_hash)
         if block is not None:
-            tx_removals, tx_additions = await self.full_node.blockchain.get_tx_removals_and_additions(block)
+            tx_removals, tx_additions, _ = await self.full_node.blockchain.get_tx_removals_and_additions(block)
             header_block = get_block_header(block, tx_additions, tx_removals)
             msg = make_msg(
                 ProtocolMessageTypes.respond_block_header,
