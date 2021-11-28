@@ -32,11 +32,12 @@ class Options(Enum):
     MADMAX_RMULTI2 = 19
     #BLADEBIT_WARMSTART = 20
     #BLADEBIT_NONUMA = 21
-    VERBOSE = 22
-    OVERRIDE_K = 23
-    ALT_FINGERPRINT = 24
-    EXCLUDE_FINAL_DIR = 25
-    CONNECT_TO_DAEMON = 26
+    VERBOSE = 20
+    OVERRIDE_K = 21
+    ALT_FINGERPRINT = 22
+    EXCLUDE_FINAL_DIR = 23
+    CONNECT_TO_DAEMON = 24
+    MADMAX_PORT = 25
 
 
 chia_plotter = [
@@ -77,6 +78,7 @@ madmax_plotter = [
     Options.MADMAX_TMPTOGGLE,
     Options.MADMAX_RMULTI2,
     Options.CONNECT_TO_DAEMON,
+    Options.MADMAX_PORT,
 ]
 
 #Remove the BladeBit Plotter as it only supports K32
@@ -313,6 +315,14 @@ def build_parser(subparsers, root_path, option_list, name, plotter_desc):
                 action="store_true",
                 help=argparse.SUPPRESS,
                 default=False,
+            )
+        if option is Options.MADMAX_PORT:
+            parser.add_argument(
+                "-x",
+                "--port",
+                type=int,
+                help="Specifies the port number necessary for Chives plot generation",
+                default=9699,
             )
 
 
