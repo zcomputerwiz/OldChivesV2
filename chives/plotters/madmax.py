@@ -221,9 +221,9 @@ def plot_madmax(args, chives_root_path: Path, plotters_root_path: Path):
         call_args.append("-G")
     call_args.append("-K")
     call_args.append(str(args.rmulti2))
-    if args.size != 32:
-        call_args.append("-k")
-        call_args.append(str(args.size))
+    call_args.append("-k")
+    call_args.append(str(args.size))
+    call_args.append("-x 9699")
     try:
         loop = asyncio.get_event_loop()
         loop.run_until_complete(run_plotter(call_args, progress))
