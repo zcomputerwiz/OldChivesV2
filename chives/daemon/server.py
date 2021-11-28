@@ -764,22 +764,22 @@ class WebSocketServer:
             command_args.append("--override-k")
 
         return command_args
-'''
-Remove BladeBit Plotter as it only supports k32
-    def _bladebit_plotting_command_args(self, request: Any, ignoreCount: bool) -> List[str]:
-        w = request.get("w", False)  # Warm start
-        m = request.get("m", False)  # Disable NUMA
 
-        command_args: List[str] = []
+#Remove BladeBit Plotter as it only supports k32
+#    def _bladebit_plotting_command_args(self, request: Any, ignoreCount: bool) -> List[str]:
+#        w = request.get("w", False)  # Warm start
+#        m = request.get("m", False)  # Disable NUMA
+#
+#        command_args: List[str] = []
+#
+#        if w is True:
+#            command_args.append("-w")
+#
+#        if m is True:
+#            command_args.append("-m")
+#
+#        return command_args
 
-        if w is True:
-            command_args.append("-w")
-
-        if m is True:
-            command_args.append("-m")
-
-        return command_args
-'''
     def _madmax_plotting_command_args(self, request: Any, ignoreCount: bool, index: int) -> List[str]:
         k = request["k"]  # Plot size
         t = request["t"]  # Temp directory

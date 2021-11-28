@@ -79,25 +79,22 @@ madmax_plotter = [
     Options.CONNECT_TO_DAEMON,
 ]
 
-'''
-Remove the BladeBit Plotter as it only supports K32
-plot sizes and is useless for Chives
-
-bladebit_plotter = [
-    Options.NUM_THREADS,
-    Options.PLOT_COUNT,
-    Options.FARMERKEY,
-    Options.POOLKEY,
-    Options.POOLCONTRACT,
-    Options.ID,
-    Options.BLADEBIT_WARMSTART,
-    Options.BLADEBIT_NONUMA,
-    Options.FINAL_DIR,
-    Options.VERBOSE,
-    Options.CONNECT_TO_DAEMON,
-]
-'''
-
+#Remove the BladeBit Plotter as it only supports K32
+#plot sizes and is useless for Chives
+#
+#bladebit_plotter = [
+#    Options.NUM_THREADS,
+#    Options.PLOT_COUNT,
+#    Options.FARMERKEY,
+#    Options.POOLKEY,
+#    Options.POOLCONTRACT,
+#    Options.ID,
+#    Options.BLADEBIT_WARMSTART,
+#    Options.BLADEBIT_NONUMA,
+#    Options.FINAL_DIR,
+#    Options.VERBOSE,
+#    Options.CONNECT_TO_DAEMON,
+#]
 
 def get_plotters_root_path(root_path: Path) -> Path:
     return root_path / "plotters"

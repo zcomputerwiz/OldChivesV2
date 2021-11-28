@@ -21,20 +21,19 @@ def install_plotter(plotter, root_path):
     #Move the return here for ease of reading    
     print("Unknown plotter. No action taken.")
     return
-'''
-Remove BladeBit plotter as it only supports k32
-plot sizes and is useless for Chives
-    elif plotter == "bladebit":
-        if not os.path.exists(root_path / "bladebit/.bin/release/bladebit"):
-            print("Installing bladebit plotter.")
-            try:
-                install_bladebit(root_path)
-            except Exception as e:
-                print(f"Exception while installing bladebit plotter: {e}")
-                return
-        else:
-            print("Bladebit plotter already installed.")
-    else:
-        print("Unknown plotter. No action taken.")
-        return
-'''
+
+#Remove BladeBit plotter as it only supports k32
+#plot sizes and is useless for Chives
+#    elif plotter == "bladebit":
+#        if not os.path.exists(root_path / "bladebit/.bin/release/bladebit"):
+#            print("Installing bladebit plotter.")
+#            try:
+#                install_bladebit(root_path)
+#            except Exception as e:
+#                print(f"Exception while installing bladebit plotter: {e}")
+#                return
+#        else:
+#            print("Bladebit plotter already installed.")
+#    else:
+#        print("Unknown plotter. No action taken.")
+#        return
