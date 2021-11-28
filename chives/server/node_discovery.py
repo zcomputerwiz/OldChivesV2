@@ -27,7 +27,7 @@ MAX_CONCURRENT_OUTBOUND_CONNECTIONS = 70
 NETWORK_ID_DEFAULT_PORTS = {
     "mainnet": 9699,
     "testnet7": 59699,
-    "testnet8": 58445,
+    "testnet8": 59699,
 }
 
 
