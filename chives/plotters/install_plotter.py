@@ -1,5 +1,5 @@
 import os
-from chives.plotters.bladebit import install_bladebit
+#from chives.plotters.bladebit import install_bladebit
 from chives.plotters.madmax import install_madmax
 
 
@@ -17,6 +17,13 @@ def install_plotter(plotter, root_path):
             return
         else:
             print("Madmax plotter already installed.")
+            return
+    #Move the return here for ease of reading    
+    print("Unknown plotter. No action taken.")
+    return
+'''
+Remove BladeBit plotter as it only supports k32
+plot sizes and is useless for Chives
     elif plotter == "bladebit":
         if not os.path.exists(root_path / "bladebit/.bin/release/bladebit"):
             print("Installing bladebit plotter.")
@@ -30,3 +37,4 @@ def install_plotter(plotter, root_path):
     else:
         print("Unknown plotter. No action taken.")
         return
+'''

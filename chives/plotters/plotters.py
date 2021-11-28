@@ -2,7 +2,7 @@ import argparse
 import binascii
 import os
 from enum import Enum
-from chives.plotters.bladebit import get_bladebit_install_info, plot_bladebit
+#from chives.plotters.bladebit import get_bladebit_install_info, plot_bladebit
 from chives.plotters.chiapos import get_chiapos_install_info, plot_chives
 from chives.plotters.madmax import get_madmax_install_info, plot_madmax
 from chives.plotters.install_plotter import install_plotter
@@ -30,8 +30,8 @@ class Options(Enum):
     MADMAX_TMPTOGGLE = 17
     POOLCONTRACT = 18
     MADMAX_RMULTI2 = 19
-    BLADEBIT_WARMSTART = 20
-    BLADEBIT_NONUMA = 21
+    #BLADEBIT_WARMSTART = 20
+    #BLADEBIT_NONUMA = 21
     VERBOSE = 22
     OVERRIDE_K = 23
     ALT_FINGERPRINT = 24
@@ -79,6 +79,10 @@ madmax_plotter = [
     Options.CONNECT_TO_DAEMON,
 ]
 
+'''
+Remove the BladeBit Plotter as it only supports K32
+plot sizes and is useless for Chives
+
 bladebit_plotter = [
     Options.NUM_THREADS,
     Options.PLOT_COUNT,
@@ -92,6 +96,7 @@ bladebit_plotter = [
     Options.VERBOSE,
     Options.CONNECT_TO_DAEMON,
 ]
+'''
 
 
 def get_plotters_root_path(root_path: Path) -> Path:
@@ -256,22 +261,22 @@ def build_parser(subparsers, root_path, option_list, name, plotter_desc):
                 help="Farmer Public Key (48 bytes)",
                 default="",
             )
-        if option is Options.BLADEBIT_WARMSTART:
-            parser.add_argument(
-                "-w",
-                "--warmstart",
-                action="store_true",
-                help="Warm start",
-                default=False,
-            )
-        if option is Options.BLADEBIT_NONUMA:
-            parser.add_argument(
-                "-m",
-                "--nonuma",
-                action="store_true",
-                help="Disable numa",
-                default=False,
-            )
+#        if option is Options.BLADEBIT_WARMSTART:
+#            parser.add_argument(
+#                "-w",
+#                "--warmstart",
+#                action="store_true",
+#                help="Warm start",
+#                default=False,
+#            )
+#        if option is Options.BLADEBIT_NONUMA:
+#            parser.add_argument(
+#                "-m",
+#                "--nonuma",
+#                action="store_true",
+#                help="Disable numa",
+#                default=False,
+#            )
         if option is Options.VERBOSE:
             parser.add_argument(
                 "-v",
@@ -335,10 +340,10 @@ def call_plotters(root_path: Path, args):
     subparsers = plotters.add_subparsers(help="Available options", dest="plotter")
     build_parser(subparsers, root_path, chia_plotter, "chiapos", "Chiapos Plotter")
     build_parser(subparsers, root_path, madmax_plotter, "madmax", "Madmax Plotter")
-    build_parser(subparsers, root_path, bladebit_plotter, "bladebit", "Bladebit Plotter")
+    #build_parser(subparsers, root_path, bladebit_plotter, "bladebit", "Bladebit Plotter")
     install_parser = subparsers.add_parser("install", description="Install custom plotters.")
     install_parser.add_argument(
-        "install_plotter", type=str, help="The plotters available for installing. Choose from madmax or bladebit."
+        "install_plotter", type=str, help="The plotters available for installing."# Choose from madmax or bladebit."
     )
     args = plotters.parse_args(args)
 
@@ -346,8 +351,8 @@ def call_plotters(root_path: Path, args):
         plot_chives(args, chives_root_path)
     if args.plotter == "madmax":
         plot_madmax(args, chives_root_path, root_path)
-    if args.plotter == "bladebit":
-        plot_bladebit(args, chives_root_path, root_path)
+    #if args.plotter == "bladebit":
+    #    plot_bladebit(args, chives_root_path, root_path)
     if args.plotter == "install":
         install_plotter(args.install_plotter, root_path)
 
@@ -356,13 +361,13 @@ def get_available_plotters(root_path) -> Dict[str, Any]:
     plotters_root_path: Path = get_plotters_root_path(root_path)
     plotters: Dict[str, Any] = {}
     chiapos: Optional[Dict[str, Any]] = get_chiapos_install_info()
-    bladebit: Optional[Dict[str, Any]] = get_bladebit_install_info(plotters_root_path)
+    #bladebit: Optional[Dict[str, Any]] = get_bladebit_install_info(plotters_root_path)
     madmax: Optional[Dict[str, Any]] = get_madmax_install_info(plotters_root_path)
 
     if chiapos is not None:
         plotters["chiapos"] = chiapos
-    if bladebit is not None:
-        plotters["bladebit"] = bladebit
+    #if bladebit is not None:
+    #    plotters["bladebit"] = bladebit
     if madmax is not None:
         plotters["madmax"] = madmax
 
