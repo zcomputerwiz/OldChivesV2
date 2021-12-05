@@ -10,8 +10,6 @@ on:
   pull_request:
     branches:
       - '**'
-  workflow_dispatch:
-
 jobs:
   build:
     name: Linux .deb installer on Python 3.8
