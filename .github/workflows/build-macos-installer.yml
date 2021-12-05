@@ -103,6 +103,7 @@ jobs:
           });
           return releases.data[0].tag_name;
 
+# K34 plots are not needed for Chives
     - name: Get latest madmax plotter
       run: |
         mkdir "$GITHUB_WORKSPACE/madmax"
