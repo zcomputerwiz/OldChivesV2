@@ -3,16 +3,16 @@
 set -euo pipefail
 
 pip install setuptools_scm
-# The environment variable CHIA_INSTALLER_VERSION needs to be defined.
+# The environment variable CHIVES_INSTALLER_VERSION needs to be defined.
 # If the env variable NOTARIZE and the username and password variables are
 # set, this will attempt to Notarize the signed DMG.
-CHIA_INSTALLER_VERSION=$(python installer-version.py)
+CHIVES_INSTALLER_VERSION=$(python installer-version.py)
 
-if [ ! "$CHIA_INSTALLER_VERSION" ]; then
-	echo "WARNING: No environment variable CHIA_INSTALLER_VERSION set. Using 0.0.0."
-	CHIA_INSTALLER_VERSION="0.0.0"
+if [ ! "$CHIVES_INSTALLER_VERSION" ]; then
+	echo "WARNING: No environment variable CHIVES_INSTALLER_VERSION set. Using 0.0.0."
+	CHIVES_INSTALLER_VERSION="0.0.0"
 fi
-echo "Chia Installer Version is: $CHIA_INSTALLER_VERSION"
+echo "Chives Installer Version is: $CHIVES_INSTALLER_VERSION"
 
 echo "Installing npm and electron packagers"
 npm install electron-installer-dmg -g
@@ -29,7 +29,7 @@ mkdir dist
 
 echo "Create executables with pyinstaller"
 pip install pyinstaller==4.5
-SPEC_FILE=$(python -c 'import chia; print(chia.PYINSTALLER_SPEC_PATH)')
+SPEC_FILE=$(python -c 'import chives; print(chives.PYINSTALLER_SPEC_PATH)')
 pyinstaller --log-level=INFO "$SPEC_FILE"
 LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
@@ -53,11 +53,11 @@ fi
 # sets the version for chives-blockchain in package.json
 brew install jq
 cp package.json package.json.orig
-jq --arg VER "$CHIA_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
+jq --arg VER "$CHIVES_INSTALLER_VERSION" '.version=$VER' package.json > temp.json && mv temp.json package.json
 
-electron-packager . Chia --asar.unpack="**/daemon/**" --platform=darwin \
---icon=src/assets/img/Chia.icns --overwrite --app-bundle-id=net.chia.blockchain \
---appVersion=$CHIA_INSTALLER_VERSION
+electron-packager . Chives --asar.unpack="**/daemon/**" --platform=darwin \
+--icon=src/assets/img/Chives.icns --overwrite --app-bundle-id=net.chives.blockchain \
+--appVersion=$CHIVES_INSTALLER_VERSION
 LAST_EXIT_CODE=$?
 
 # reset the package.json to the original
@@ -69,8 +69,8 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 fi
 
 if [ "$NOTARIZE" == true ]; then
-  electron-osx-sign Chia-darwin-x64/Chia.app --platform=darwin \
-  --hardened-runtime=true --provisioning-profile=chiablockchain.provisionprofile \
+  electron-osx-sign Chives-darwin-x64/Chives.app --platform=darwin \
+  --hardened-runtime=true --provisioning-profile=chivesblockchain.provisionprofile \
   --entitlements=entitlements.mac.plist --entitlements-inherit=entitlements.mac.plist \
   --no-gatekeeper-assess
 fi
@@ -80,13 +80,13 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
-mv Chia-darwin-x64 ../build_scripts/dist/
+mv Chives-darwin-x64 ../build_scripts/dist/
 cd ../build_scripts || exit
 
-DMG_NAME="Chia-$CHIA_INSTALLER_VERSION.dmg"
+DMG_NAME="Chives-$CHIVES_INSTALLER_VERSION.dmg"
 echo "Create $DMG_NAME"
 mkdir final_installer
-electron-installer-dmg dist/Chia-darwin-x64/Chia.app Chia-$CHIA_INSTALLER_VERSION \
+electron-installer-dmg dist/Chives-darwin-x64/Chives.app Chives-$CHIVES_INSTALLER_VERSION \
 --overwrite --out final_installer
 LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
@@ -97,7 +97,7 @@ fi
 if [ "$NOTARIZE" == true ]; then
 	echo "Notarize $DMG_NAME on ci"
 	cd final_installer || exit
-  notarize-cli --file=$DMG_NAME --bundle-id net.chia.blockchain \
+  notarize-cli --file=$DMG_NAME --bundle-id net.chives.blockchain \
 	--username "$APPLE_NOTARIZE_USERNAME" --password "$APPLE_NOTARIZE_PASSWORD"
   echo "Notarization step complete"
 else
