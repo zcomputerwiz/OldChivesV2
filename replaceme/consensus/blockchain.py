@@ -45,6 +45,8 @@ from replaceme.util.generator_tools import get_block_header, tx_removals_and_add
 from replaceme.util.ints import uint16, uint32, uint64, uint128
 from replaceme.util.streamable import recurse_jsonify
 from replaceme.full_node.block_height_map import BlockHeightMap
+from replaceme.util.default_root import DEFAULT_ROOT_PATH
+from replaceme.util.config import load_config
 
 log = logging.getLogger(__name__)
 
