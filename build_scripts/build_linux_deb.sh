@@ -12,7 +12,7 @@ else
 fi
 
 pip install setuptools_scm
-# The environment variable CHIA_INSTALLER_VERSION needs to be defined
+# The environment variable REPLACEME_INSTALLER_VERSION needs to be defined
 # If the env variable NOTARIZE and the username and password variables are
 # set, this will attempt to Notarize the signed DMG
 REPLACEME_INSTALLER_VERSION=$(python installer-version.py)
