@@ -1,7 +1,10 @@
 from typing import KeysView, Generator
 
 SERVICES_FOR_GROUP = {
-    "all": ("replaceme_harvester replaceme_timelord_launcher replaceme_timelord " "replaceme_farmer replaceme_full_node replaceme_wallet").split(),
+    "all": (
+        "replaceme_harvester replaceme_timelord_launcher replaceme_timelord "
+        "replaceme_farmer replaceme_full_node replaceme_wallet"
+    ).split(),
     "node": "replaceme_full_node".split(),
     "harvester": "replaceme_harvester".split(),
     "farmer": "replaceme_harvester replaceme_farmer replaceme_full_node replaceme_wallet".split(),

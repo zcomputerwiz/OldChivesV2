@@ -214,7 +214,9 @@ async def summary(
     if amounts is not None:
         print(f"Total replaceme farmed: {amounts['farmed_amount'] / units['replaceme']}")
         print(f"User transaction fees: {amounts['fee_amount'] / units['replaceme']}")
-        print(f"Block rewards: {(amounts['farmer_reward_amount'] + amounts['pool_reward_amount']) / units['replaceme']}")
+        print(
+            f"Block rewards: {(amounts['farmer_reward_amount'] + amounts['pool_reward_amount']) / units['replaceme']}"
+        )
         print(f"Last height farmed: {amounts['last_height_farmed']}")
 
     class PlotStats:
@@ -273,7 +275,10 @@ async def summary(
 
     if amounts is None:
         if wallet_not_running:
-            print("For details on farmed rewards and fees you should run 'replaceme start wallet' and 'replaceme wallet show'")
+            print(
+                "For details on farmed rewards and fees you should run"
+                " 'replaceme start wallet' and 'replaceme wallet show'"
+            )
         elif wallet_not_ready:
             print("For details on farmed rewards and fees you should run 'replaceme wallet show'")
     else:

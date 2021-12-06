@@ -235,7 +235,11 @@ class ReplacemeServer:
         else:
             self.p2p_crt_path, self.p2p_key_path = public_ssl_paths(self.root_path, self.config)
             ssl_context = ssl_context_for_server(
-                self.replaceme_ca_crt_path, self.replaceme_ca_key_path, self.p2p_crt_path, self.p2p_key_path, log=self.log
+                self.replaceme_ca_crt_path,
+                self.replaceme_ca_key_path,
+                self.p2p_crt_path,
+                self.p2p_key_path,
+                log=self.log
             )
 
         self.site = web.TCPSite(

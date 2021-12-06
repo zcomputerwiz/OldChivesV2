@@ -16,7 +16,13 @@ from replaceme.full_node.bundle_tools import best_solution_generator_from_templa
 from replaceme.full_node.full_node import FullNode
 from replaceme.full_node.mempool_check_conditions import get_puzzle_and_solution_for_coin
 from replaceme.full_node.signage_point import SignagePoint
-from replaceme.protocols import farmer_protocol, full_node_protocol, introducer_protocol, timelord_protocol, wallet_protocol
+from replaceme.protocols import (
+    farmer_protocol,
+    full_node_protocol,
+    introducer_protocol,
+    timelord_protocol,
+    wallet_protocol
+)
 from replaceme.protocols.full_node_protocol import RejectBlock, RejectBlocks
 from replaceme.protocols.protocol_message_types import ProtocolMessageTypes
 from replaceme.protocols.wallet_protocol import (

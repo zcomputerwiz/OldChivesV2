@@ -31,7 +31,12 @@ from replaceme.full_node.mempool_manager import MempoolManager
 from replaceme.full_node.signage_point import SignagePoint
 from replaceme.full_node.sync_store import SyncStore
 from replaceme.full_node.weight_proof import WeightProofHandler
-from replaceme.protocols import farmer_protocol, full_node_protocol, timelord_protocol, wallet_protocol
+from replaceme.protocols import (
+    farmer_protocol,
+    full_node_protocol,
+    timelord_protocol,
+    wallet_protocol
+)
 from replaceme.protocols.full_node_protocol import (
     RequestBlocks,
     RespondBlock,
@@ -327,7 +332,9 @@ class FullNode:
         if self.state_changed_callback is not None:
             self.state_changed_callback(change)
 
-    async def short_sync_batch(self, peer: ws.WSReplacemeConnection, start_height: uint32, target_height: uint32) -> bool:
+    async def short_sync_batch(
+        self, peer: ws.WSReplacemeConnection, start_height: uint32, target_height: uint32
+    ) -> bool:
         """
         Tries to sync to a chain which is not too far in the future, by downloading batches of blocks. If the first
         block that we download is not connected to our chain, we return False and do an expensive long sync instead.

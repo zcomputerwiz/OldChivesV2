@@ -16,7 +16,12 @@ from replaceme.consensus.cost_calculator import NPCResult, calculate_cost_of_pro
 from replaceme.full_node.mempool_check_conditions import get_name_puzzle_conditions
 from replaceme.full_node.signage_point import SignagePoint
 from replaceme.types.blockchain_format.coin import Coin, hash_coin_list
-from replaceme.types.blockchain_format.foliage import Foliage, FoliageBlockData, FoliageTransactionBlock, TransactionsInfo
+from replaceme.types.blockchain_format.foliage import (
+    Foliage,
+    FoliageBlockData,
+    FoliageTransactionBlock,
+    TransactionsInfo
+)
 from replaceme.types.blockchain_format.pool_target import PoolTarget
 from replaceme.types.blockchain_format.proof_of_space import ProofOfSpace
 from replaceme.types.blockchain_format.reward_chain_block import RewardChainBlock, RewardChainBlockUnfinished

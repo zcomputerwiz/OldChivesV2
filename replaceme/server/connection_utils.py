@@ -37,7 +37,9 @@ async def send_all_first_reply(
         return None
 
 
-async def send_to_random(func: str, arg: Any, peers: List[WSReplacemeConnection]) -> Optional[Tuple[Any, WSReplacemeConnection]]:
+async def send_to_random(
+    func: str, arg: Any, peers: List[WSReplacemeConnection]
+) -> Optional[Tuple[Any, WSReplacemeConnection]]:
     """performs an API request to peers and returns the result of the first response and the peer that sent it."""
 
     async def do_func(peer_x: WSReplacemeConnection, func_x: str, arg_x: Any):
