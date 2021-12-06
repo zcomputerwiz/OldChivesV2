@@ -21,7 +21,7 @@ from replaceme.protocols import (
     full_node_protocol,
     introducer_protocol,
     timelord_protocol,
-    wallet_protocol
+    wallet_protocol,
 )
 from replaceme.protocols.full_node_protocol import RejectBlock, RejectBlocks
 from replaceme.protocols.protocol_message_types import ProtocolMessageTypes

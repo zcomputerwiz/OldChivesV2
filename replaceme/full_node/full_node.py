@@ -31,12 +31,7 @@ from replaceme.full_node.mempool_manager import MempoolManager
 from replaceme.full_node.signage_point import SignagePoint
 from replaceme.full_node.sync_store import SyncStore
 from replaceme.full_node.weight_proof import WeightProofHandler
-from replaceme.protocols import (
-    farmer_protocol,
-    full_node_protocol,
-    timelord_protocol,
-    wallet_protocol
-)
+from replaceme.protocols import farmer_protocol, full_node_protocol, timelord_protocol, wallet_protocol
 from replaceme.protocols.full_node_protocol import (
     RequestBlocks,
     RespondBlock,

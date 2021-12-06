@@ -76,6 +76,7 @@ jobs:
           DISABLE_ERRORS: false
           PYTHONPATH: ${{ github.workspace }}:$PYTHONPATH
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         This excludes the tests folder, as I do not use them
           FILTER_REGEX_EXCLUDE: /tests/|.*github/ISSUE_TEMPLATE/config.yml
 #          ACTIONS_RUNNER_DEBUG: true
 

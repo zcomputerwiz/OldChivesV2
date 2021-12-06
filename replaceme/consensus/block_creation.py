@@ -20,7 +20,7 @@ from replaceme.types.blockchain_format.foliage import (
     Foliage,
     FoliageBlockData,
     FoliageTransactionBlock,
-    TransactionsInfo
+    TransactionsInfo,
 )
 from replaceme.types.blockchain_format.pool_target import PoolTarget
 from replaceme.types.blockchain_format.proof_of_space import ProofOfSpace

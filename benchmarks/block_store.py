@@ -20,7 +20,7 @@ from replaceme.types.blockchain_format.foliage import (
     Foliage,
     FoliageTransactionBlock,
     TransactionsInfo,
-    FoliageBlockData
+    FoliageBlockData,
 )
 from replaceme.types.blockchain_format.program import SerializedProgram
 from replaceme.types.blockchain_format.sized_bytes import bytes32

@@ -239,7 +239,7 @@ class ReplacemeServer:
                 self.replaceme_ca_key_path,
                 self.p2p_crt_path,
                 self.p2p_key_path,
-                log=self.log
+                log=self.log,
             )
 
         self.site = web.TCPSite(
