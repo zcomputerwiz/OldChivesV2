@@ -85,7 +85,13 @@ def challenges_cmd(farmer_rpc_port: Optional[int], limit: int) -> None:
     asyncio.run(challenges(farmer_rpc_port, limit))
 
 
-@farm_cmd.command("uploadfarmerdata", short_help="Upload the farm summary and challenges data to community.chivescoin.org, and you can query the data in this site.")
+@farm_cmd.command(
+    "uploadfarmerdata",
+    short_help=(
+        "Upload the farm summary and challenges data to community.chivescoin.org,"
+        " and you can query the data in this site."
+    ),
+)
 @click.option(
     "-p",
     "--rpc-port",
@@ -120,7 +126,8 @@ def challenges_cmd(farmer_rpc_port: Optional[int], limit: int) -> None:
     "-fp",
     "--farmer-rpc-port",
     help=(
-        "Set the port where the Farmer is hosting the RPC interface. " "See the rpc_port under farmer in config.yaml"
+        "Set the port where the Farmer is hosting the RPC interface. "
+        "See the rpc_port under farmer in config.yaml"
     ),
     type=int,
     default=None,
@@ -128,7 +135,7 @@ def challenges_cmd(farmer_rpc_port: Optional[int], limit: int) -> None:
 )
 def uploadfarmerdata_cmd(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port: int, farmer_rpc_port: int) -> None:
     print("Ready to upload harvester data to community.chivescoin.org...")
-    from .farm_funcs import summary,challenges,uploadfarmerdata
+    from .farm_funcs import uploadfarmerdata
     import asyncio
     import requests
     import time
@@ -139,9 +146,15 @@ def uploadfarmerdata_cmd(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port
         FarmerSatusJson = json.dumps(FarmerSatus)
         print('------------------------------------------------------------------')
         print(datetime.fromtimestamp(time.time()).strftime("%Y-%m-%d %H:%M:%S"))
-        print(f"Upload the farm summary and challenges data to community.chivescoin.org, and you can query the data in this site.")
+        print(
+            "Upload the farm summary and challenges data to community.chivescoin.org,"
+            " and you can query the data in this site."
+        )
         try:
-            content = requests.post('https://community.chivescoin.org/farmerinfor/uploaddata.php', data={'FarmerSatus':FarmerSatusJson})
+            content = requests.post(
+                'https://community.chivescoin.org/farmerinfor/uploaddata.php',
+                data={'FarmerSatus':FarmerSatusJson},
+            )
             try:
                 content = content.json()
                 print(content)
@@ -149,6 +162,6 @@ def uploadfarmerdata_cmd(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port
                 # No nothing  
                 print("https://community.chivescoin.org no respone. Json parse failed.")            
         except:
-            print("Network Error.");
+            print("Network Error.")
         time.sleep(600)
 
