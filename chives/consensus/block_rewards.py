@@ -50,6 +50,7 @@ def calculate_base_farmer_reward(height: uint32) -> uint64:
     else:
         return uint64(int((1 / 8) * 0.125 * 0.9 * 100 * _mojo_per_chives))
 
+
 def calculate_base_community_reward(height: uint32) -> uint64:
     """
     Community Rewards: 10% every block at stage 1 & 2 & 3

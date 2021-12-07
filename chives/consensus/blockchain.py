@@ -626,7 +626,6 @@ class Blockchain(BlockchainInterface):
             else self.block_record(block.prev_header_hash).height
         )
 
-
         error_code, cost_result = await validate_block_body(
             self.constants,
             self,

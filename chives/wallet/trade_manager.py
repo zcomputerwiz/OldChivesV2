@@ -405,9 +405,7 @@ class TradeManager:
                 if coinsol.coin in [record.coin for record in unspent]:
                     return False, None, "can't respond to own offer"
                 if chives_discrepancy is None:
-                    chives_discrepancy = get_output_discrepancy_for_puzzle_and_solution(
-                        coinsol.coin, puzzle, solution
-                    )
+                    chives_discrepancy = get_output_discrepancy_for_puzzle_and_solution(coinsol.coin, puzzle, solution)
                 else:
                     chives_discrepancy += get_output_discrepancy_for_puzzle_and_solution(
                         coinsol.coin, puzzle, solution

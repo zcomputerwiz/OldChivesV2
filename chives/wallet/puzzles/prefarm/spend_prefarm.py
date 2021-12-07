@@ -3,7 +3,11 @@ import asyncio
 from blspy import G2Element
 from clvm_tools import binutils
 
-from chives.consensus.block_rewards import calculate_base_community_reward, calculate_base_farmer_reward, calculate_pool_reward
+from chives.consensus.block_rewards import (
+    calculate_base_community_reward,
+    calculate_base_farmer_reward,
+    calculate_pool_reward,
+)
 from chives.rpc.full_node_rpc_client import FullNodeRpcClient
 from chives.types.blockchain_format.program import Program
 from chives.types.coin_spend import CoinSpend
@@ -83,7 +87,7 @@ async def main() -> None:
         # res = await client.push_tx(sb_farmer)
         # res = await client.push_tx(sb_pool)
 
-        #print(res)
+        # print(res)
         up = await client.get_coin_records_by_puzzle_hash(farmer_prefarm.puzzle_hash, True)
         uf = await client.get_coin_records_by_puzzle_hash(pool_prefarm.puzzle_hash, True)
         uc = await client.get_coin_records_by_puzzle_hash(community_prefarm.puzzle_hash, True)

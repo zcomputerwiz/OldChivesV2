@@ -169,8 +169,8 @@ async def challenges(farmer_rpc_port: Optional[int], limit: int) -> None:
     signage_points.reverse()
     if limit != 0:
         signage_points = signage_points[:limit]
-    
-    #print(signage_points)
+
+    # print(signage_points)
     for signage_point in signage_points:
         print(
             (
@@ -216,9 +216,7 @@ async def summary(
     if amounts is not None:
         print(f"Total chives farmed: {amounts['farmed_amount'] / units['chives']}")
         print(f"User transaction fees: {amounts['fee_amount'] / units['chives']}")
-        print(
-            f"Block rewards: {(amounts['farmer_reward_amount'] + amounts['pool_reward_amount']) / units['chives']}"
-        )
+        print(f"Block rewards: {(amounts['farmer_reward_amount'] + amounts['pool_reward_amount']) / units['chives']}")
         print(f"Last height farmed: {amounts['last_height_farmed']}")
         print(f"Farmer Reward: {amounts['farmer_reward_amount'] / units['chives']}")
         print(f"Pool Reward: {amounts['pool_reward_amount'] / units['chives']}")
@@ -320,7 +318,7 @@ async def uploadfarmerdata(rpc_port: int, wallet_rpc_port: int, harvester_rpc_po
     total_plot_size = 0
     if plots is not None:
         total_plot_size = sum(map(lambda x: x["file_size"], plots["plots"]))
-        PlotCount = len(plots['plots'])
+        PlotCount = len(plots["plots"])
         TotalSizeOfPlots = format_bytes(total_plot_size)
     else:
         PlotCount = "Unknown"
@@ -340,17 +338,15 @@ async def uploadfarmerdata(rpc_port: int, wallet_rpc_port: int, harvester_rpc_po
         ExpectedTimeToWin = "Never (no plots)"
     else:
         ExpectedTimeToWin = format_minutes(minutes)
-    
+
     signage_points = await get_challenges(farmer_rpc_port)
-    if signage_points is None:
-        ""
-    else:
+    if signage_points is not None:
         signage_points.reverse()
         limit = 10
         if limit != 0:
             signage_points = signage_points[:limit]
-    
-    #get wallet address and fingerprint
+
+    # get wallet address and fingerprint
     from typing import List
     from blspy import AugSchemeMPL, G1Element, G2Element
     from chives.consensus.coinbase import create_puzzlehash_for_pk
@@ -358,8 +354,8 @@ async def uploadfarmerdata(rpc_port: int, wallet_rpc_port: int, harvester_rpc_po
     from chives.util.config import load_config
     from chives.util.default_root import DEFAULT_ROOT_PATH
     from chives.util.ints import uint32
-    from chives.util.keychain import Keychain, bytes_to_mnemonic, generate_mnemonic
-    from chives.wallet.derive_keys import master_sk_to_farmer_sk, master_sk_to_pool_sk, master_sk_to_wallet_sk
+    from chives.util.keychain import Keychain
+    from chives.wallet.derive_keys import master_sk_to_wallet_sk
 
     root_path = DEFAULT_ROOT_PATH
     config = load_config(root_path, "config.yaml")
@@ -373,9 +369,11 @@ async def uploadfarmerdata(rpc_port: int, wallet_rpc_port: int, harvester_rpc_po
         for sk, seed in private_keys:
             FingerPrint = sk.get_g1().get_fingerprint()
             FingerPrint = str(FingerPrint)[0:6]
-            Address = encode_puzzle_hash(create_puzzlehash_for_pk(master_sk_to_wallet_sk(sk, uint32(0)).get_g1()), prefix)
+            Address = encode_puzzle_hash(
+                create_puzzlehash_for_pk(master_sk_to_wallet_sk(sk, uint32(0)).get_g1()), prefix
+            )
             break
-    
+
     from hashlib import sha256
     import platform
     RETURN_TEXT     = {}
@@ -393,5 +391,4 @@ async def uploadfarmerdata(rpc_port: int, wallet_rpc_port: int, harvester_rpc_po
     RETURN_TEXT['wallet_not_ready'] = wallet_not_ready
     RETURN_TEXT['signage_points'] = signage_points
     return RETURN_TEXT
-    #print(signage_points)
-    
+    # print(signage_points)

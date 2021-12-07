@@ -255,7 +255,7 @@ class WalletRpcApi:
                 "word": e.args[0],
             }
         except Exception as e:
-            return {"success": False, "error": str(e)}            
+            return {"success": False, "error": str(e)}
 
         fingerprint = sk.get_g1().get_fingerprint()
         await self._stop_wallet()
@@ -1145,7 +1145,7 @@ class WalletRpcApi:
                 last_height_farmed = height
             # Chives Network Code
             # Do not need to calculate the Community Rewards Amount To Wallet Card
-            if( uint64(calculate_base_community_reward(height)) != uint64(record.amount) ):
+            if uint64(calculate_base_community_reward(height)) != uint64(record.amount):
                 if record.type == TransactionType.COINBASE_REWARD:
                     if self.service.wallet_state_manager.wallets[record.wallet_id].type() == WalletType.POOLING_WALLET:
                         # Don't add pool rewards for pool wallets.

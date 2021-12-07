@@ -236,7 +236,7 @@ class FarmerAPI:
                             f"{pool_url}/partial",
                             json=post_partial_request.to_json_dict(),
                             ssl=ssl_context_for_root(get_mozilla_ca_crt(), log=self.farmer.log),
-                            #Chives modification
+                            # Chives modification
                             headers={"User-Agent": f"Chives Blockchain v.{__version__}"},
                         ) as resp:
                             if resp.ok:
@@ -267,14 +267,11 @@ class FarmerAPI:
                     return
 
                 return
-            #OG Pooling Code
+            # OG Pooling Code
             pool_public_key = new_proof_of_space.proof.pool_public_key
             if pool_public_key is not None and self.farmer.is_pooling_enabled():
                 await self.process_new_proof_of_space_for_og_pool(
-                    new_proof_of_space,
-                    peer,
-                    pool_public_key,
-                    computed_quality_string
+                    new_proof_of_space, peer, pool_public_key, computed_quality_string
                 )
 
             return
@@ -372,7 +369,7 @@ class FarmerAPI:
                         agg_sig_cc_sp,
                         agg_sig_rc_sp,
                         self.farmer.farmer_target,
-                        #Chives modification
+                        # Chives modification
                         self.farmer.community_target,
                         pool_target,
                         pool_target_signature,
@@ -468,9 +465,9 @@ class FarmerAPI:
 
             message = harvester_protocol.NewSignagePointHarvester(
                 new_signage_point.challenge_hash,
-                #OG Pooling Modification or would be new_signage_point
+                # OG Pooling Modification or would be new_signage_point
                 difficulty,
-                #OG Pooling Modification or would be new_signage_point
+                # OG Pooling Modification or would be new_signage_point
                 sub_slot_iters,
                 new_signage_point.signage_point_index,
                 new_signage_point.challenge_chain_sp,
@@ -540,13 +537,13 @@ class FarmerAPI:
     @peer_required
     async def respond_plots(self, _: harvester_protocol.RespondPlots, peer: ws.WSChivesConnection):
         self.farmer.log.warning(f"Respond plots came too late from: {peer.get_peer_logging()}")
-    #OG Pooling Code
+    # OG Pooling Code
     async def process_new_proof_of_space_for_og_pool(
-            self,
-            new_proof_of_space: harvester_protocol.NewProofOfSpace,
-            peer: ws.WSChivesConnection,
-            pool_public_key: G1Element,
-            computed_quality_string: bytes32
+        self,
+        new_proof_of_space: harvester_protocol.NewProofOfSpace,
+        peer: ws.WSChivesConnection,
+        pool_public_key: G1Element,
+        computed_quality_string: bytes32
     ):
         og_pool_state = self.farmer.og_pool_state
 
@@ -568,10 +565,7 @@ class FarmerAPI:
         # Submit partial to pool
         is_eos = new_proof_of_space.signage_point_index == 0
         payload = PartialPayload(
-            new_proof_of_space.proof,
-            new_proof_of_space.sp_hash,
-            is_eos,
-            self.farmer.pool_payout_address
+            new_proof_of_space.proof, new_proof_of_space.sp_hash, is_eos, self.farmer.pool_payout_address
         )
 
         # The plot key is 2/2 so we need the harvester's half of the signature

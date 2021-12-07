@@ -80,4 +80,3 @@ class ConsensusConstants:
                 filtered_changes[k] = v
 
         return dataclasses.replace(self, **filtered_changes)
-        

@@ -6,7 +6,11 @@ from chiabip158 import PyBIP158
 from clvm.casts import int_from_bytes
 
 from chives.consensus.block_record import BlockRecord
-from chives.consensus.block_rewards import calculate_base_community_reward, calculate_base_farmer_reward, calculate_pool_reward
+from chives.consensus.block_rewards import (
+    calculate_base_community_reward,
+    calculate_base_farmer_reward,
+    calculate_pool_reward,
+)
 from chives.consensus.block_root_validation import validate_block_merkle_roots
 from chives.full_node.mempool_check_conditions import mempool_check_conditions_dict
 from chives.consensus.blockchain_interface import BlockchainInterface
@@ -161,16 +165,20 @@ async def validate_block_body(
                 )
                 curr_b = blocks.block_record(curr_b.prev_hash)
     
-    #log.warning("-----------block.transactions_info.reward_claims_incorporated");
-    #log.warning(block.transactions_info.reward_claims_incorporated);
-    #log.warning(expected_reward_coins);
-    #log.warning("-------------------------------------------------------------");
-    #log.warning(pool_coin);
-    #log.warning(farmer_coin);
-    #log.warning(community_coin);
-    #log.warning("-------------------------------------------------------------");
-    #log.warning(f"len(block.transactions_info.reward_claims_incorporated):{len(block.transactions_info.reward_claims_incorporated)}");
-    #log.warning(f"len(expected_reward_coins):{len(expected_reward_coins)}");
+    # log.warning("-----------block.transactions_info.reward_claims_incorporated")
+    # log.warning(block.transactions_info.reward_claims_incorporated)
+    # log.warning(expected_reward_coins)
+    # log.warning("-------------------------------------------------------------")
+    # log.warning(pool_coin)
+    # log.warning(farmer_coin)
+    # log.warning(community_coin)
+    # log.warning("-------------------------------------------------------------")
+    # log.warning(
+    #   f"len(
+    #       block.transactions_info.reward_claims_incorporated
+    #   ):{len(block.transactions_info.reward_claims_incorporated)}"
+    # )
+    # log.warning(f"len(expected_reward_coins):{len(expected_reward_coins)}")
     if set(block.transactions_info.reward_claims_incorporated) != expected_reward_coins:
         return Err.INVALID_REWARD_COINS, None
 
@@ -453,7 +461,7 @@ async def validate_block_body(
     # 18. Check that the fee amount + farmer reward < maximum coin amount
     if fees + calculate_base_farmer_reward(height) > constants.MAX_COIN_AMOUNT:
         return Err.COIN_AMOUNT_EXCEEDS_MAXIMUM, None
-        
+
     # 18. Check that the fee amount + farmer reward < maximum coin amount
     if fees + calculate_base_community_reward(height) > constants.MAX_COIN_AMOUNT:
         return Err.COIN_AMOUNT_EXCEEDS_MAXIMUM, None

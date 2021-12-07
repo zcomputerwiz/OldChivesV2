@@ -126,8 +126,7 @@ def challenges_cmd(farmer_rpc_port: Optional[int], limit: int) -> None:
     "-fp",
     "--farmer-rpc-port",
     help=(
-        "Set the port where the Farmer is hosting the RPC interface. "
-        "See the rpc_port under farmer in config.yaml"
+        "Set the port where the Farmer is hosting the RPC interface. See the rpc_port under farmer in config.yaml"
     ),
     type=int,
     default=None,
@@ -141,10 +140,11 @@ def uploadfarmerdata_cmd(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port
     import time
     import json
     from datetime import datetime
+
     while 1==1:
         FarmerSatus = asyncio.run(uploadfarmerdata(rpc_port, wallet_rpc_port, harvester_rpc_port, farmer_rpc_port))
         FarmerSatusJson = json.dumps(FarmerSatus)
-        print('------------------------------------------------------------------')
+        print("------------------------------------------------------------------")
         print(datetime.fromtimestamp(time.time()).strftime("%Y-%m-%d %H:%M:%S"))
         print(
             "Upload the farm summary and challenges data to community.chivescoin.org,"
@@ -152,7 +152,7 @@ def uploadfarmerdata_cmd(rpc_port: int, wallet_rpc_port: int, harvester_rpc_port
         )
         try:
             content = requests.post(
-                'https://community.chivescoin.org/farmerinfor/uploaddata.php',
+                "https://community.chivescoin.org/farmerinfor/uploaddata.php",
                 data={'FarmerSatus':FarmerSatusJson},
             )
             try:

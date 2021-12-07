@@ -8,7 +8,11 @@ from blspy import G1Element, G2Element
 from chiabip158 import PyBIP158
 
 from chives.consensus.block_record import BlockRecord
-from chives.consensus.block_rewards import calculate_base_community_reward, calculate_base_farmer_reward, calculate_pool_reward
+from chives.consensus.block_rewards import (
+    calculate_base_community_reward,
+    calculate_base_farmer_reward,
+    calculate_pool_reward,
+)
 from chives.consensus.blockchain_interface import BlockchainInterface
 from chives.consensus.coinbase import create_farmer_coin, create_pool_coin, create_community_coin
 from chives.consensus.constants import ConsensusConstants
@@ -168,9 +172,9 @@ def create_foliage(
 
             assert curr.fees is not None
             pool_coin = create_pool_coin(
-                curr.height, 
-                curr.pool_puzzle_hash, 
-                calculate_pool_reward(curr.height), 
+                curr.height,
+                curr.pool_puzzle_hash,
+                calculate_pool_reward(curr.height),
                 constants.GENESIS_CHALLENGE,
             )
 
@@ -180,14 +184,14 @@ def create_foliage(
                 uint64(calculate_base_farmer_reward(curr.height) + curr.fees),
                 constants.GENESIS_CHALLENGE,
             )
-            
+
             community_coin = create_community_coin(
                 curr.height,
                 constants.GENESIS_PRE_FARM_COMMUNITY_PUZZLE_HASH,
                 calculate_base_community_reward(curr.height),
                 constants.GENESIS_CHALLENGE,
             )
-            
+
             assert curr.header_hash == prev_transaction_block.header_hash
             reward_claims_incorporated += [pool_coin, farmer_coin, community_coin]
 

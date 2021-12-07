@@ -759,7 +759,7 @@ def validate_unfinished_header_block(
         ):
             return None, ValidationError(Err.INVALID_COMMUNITY)
     else:
-        #20A. Check Community Reward Puzzle Hash
+        # 20A. Check Community Reward Puzzle Hash
         if (
             header_block.foliage.foliage_block_data.community_reward_puzzle_hash
             != constants.GENESIS_PRE_FARM_COMMUNITY_PUZZLE_HASH

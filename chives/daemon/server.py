@@ -677,8 +677,8 @@ class WebSocketServer:
 
         if plotter == "chiapos":
             final_words = ["Renamed final file"]
-#        elif plotter == "bladebit":
-#            final_words = ["Finished plotting in"]
+        # elif plotter == "bladebit":
+        #    final_words = ["Finished plotting in"]
         elif plotter == "madmax":
             temp_dir = config["temp_dir"]
             final_dir = config["final_dir"]
@@ -768,20 +768,20 @@ class WebSocketServer:
 
         return command_args
 
-#Remove BladeBit Plotter as it only supports k32
-#    def _bladebit_plotting_command_args(self, request: Any, ignoreCount: bool) -> List[str]:
-#        w = request.get("w", False)  # Warm start
-#        m = request.get("m", False)  # Disable NUMA
-#
-#        command_args: List[str] = []
-#
-#        if w is True:
-#            command_args.append("-w")
-#
-#        if m is True:
-#            command_args.append("-m")
-#
-#        return command_args
+    # Remove BladeBit Plotter as it only supports k32
+    # def _bladebit_plotting_command_args(self, request: Any, ignoreCount: bool) -> List[str]:
+    #    w = request.get("w", False)  # Warm start
+    #    m = request.get("m", False)  # Disable NUMA
+    #
+    #    command_args: List[str] = []
+    #
+    #    if w is True:
+    #        command_args.append("-w")
+    #
+    #    if m is True:
+    #        command_args.append("-m")
+    #
+    #    return command_args
 
     def _madmax_plotting_command_args(self, request: Any, ignoreCount: bool, index: int) -> List[str]:
         k = request["k"]  # Plot size
@@ -819,8 +819,8 @@ class WebSocketServer:
             command_args.extend(self._chiapos_plotting_command_args(request, ignoreCount))
         elif plotter == "madmax":
             command_args.extend(self._madmax_plotting_command_args(request, ignoreCount, index))
-#        elif plotter == "bladebit":
-#            command_args.extend(self._bladebit_plotting_command_args(request, ignoreCount))
+        # elif plotter == "bladebit":
+        #     command_args.extend(self._bladebit_plotting_command_args(request, ignoreCount))
 
         return command_args
 

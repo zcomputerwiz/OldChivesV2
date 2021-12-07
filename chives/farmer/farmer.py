@@ -13,7 +13,7 @@ from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
 import chives.server.ws_connection as ws  # lgtm [py/import-and-import-from]
 from chives.consensus.coinbase import create_puzzlehash_for_pk
 from chives.consensus.constants import ConsensusConstants
-#OG Pool code
+# OG Pool code
 from chives.consensus.pot_iterations import calculate_sp_interval_iters
 from chives.farmer.pooling.og_pool_state import OgPoolState
 from chives.farmer.pooling.pool_api_client import PoolApiClient
@@ -158,7 +158,7 @@ class Farmer:
         # This is the farmer configuration
         self.farmer_target_encoded = self.config["xcc_target_address"]
         self.farmer_target = decode_puzzle_hash(self.farmer_target_encoded)
-        #Chives modification
+        # Chives modification
         self.community_target = self.constants.GENESIS_PRE_FARM_COMMUNITY_PUZZLE_HASH
 
         self.pool_public_keys = [G1Element.from_bytes(bytes.fromhex(pk)) for pk in self.config["pool_public_keys"]]
@@ -207,7 +207,7 @@ class Farmer:
         await self.setup_keys()
         self.update_pool_state_task = asyncio.create_task(self._periodically_update_pool_state_task())
         self.cache_clear_task = asyncio.create_task(self._periodically_clear_cache_and_refresh_task())
-        #OG Pooling Code
+        # OG Pooling Code
         if not self.is_pooling_enabled():
             self.log.info(f"Not OG pooling as 'pool_payout_address' and/or 'pool_url' are missing in your config")
             return
@@ -248,7 +248,7 @@ class Farmer:
     async def _await_closed(self):
         await self.cache_clear_task
         await self.update_pool_state_task
-        #OG Pooling Code
+        # OG Pooling Code
         if self.adjust_pool_difficulties_task is not None:
             await self.adjust_pool_difficulties_task
         if self.check_pool_reward_target_task is not None:
@@ -777,7 +777,7 @@ class Farmer:
                 log.error(f"_periodically_clear_cache_and_refresh_task failed: {traceback.format_exc()}")
 
             await asyncio.sleep(1)
-    #OG Pooling Code
+    # OG Pooling Code
     async def _periodically_adjust_pool_difficulties_task(self):
         time_slept = 0
         while not self._shut_down:
@@ -793,9 +793,8 @@ class Farmer:
             missing_partial_submits = int(
                 diff_since_last_partial_submit_in_seconds // self.pool_var_diff_target_in_seconds)
             new_difficulty = uint64(max(
-                (self.og_pool_state.difficulty - (missing_partial_submits * 2)),
-                self.pool_minimum_difficulty
-            ))
+                (self.og_pool_state.difficulty - (missing_partial_submits * 2)), self.pool_minimum_difficulty)
+            )
             if new_difficulty == self.og_pool_state.difficulty:
                 continue
             old_difficulty = self.og_pool_state.difficulty
@@ -817,6 +816,8 @@ class Farmer:
             time_slept = 0
             if self.pool_target is self.pool_reward_target:
                 continue
-            address_prefix = self.config["network_overrides"]["config"][self.config["selected_network"]]["address_prefix"]
+            address_prefix = (
+                self.config["network_overrides"]["config"][self.config["selected_network"]]["address_prefix"]
+            )
             pool_target_encoded = encode_puzzle_hash(self.pool_reward_target, address_prefix)
             self.set_reward_targets(farmer_target_encoded=None, pool_target_encoded=pool_target_encoded)

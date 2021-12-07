@@ -62,7 +62,8 @@ async def show_async(
                 sync_max_block = blockchain_state["sync"]["sync_tip_height"]
                 sync_current_block = blockchain_state["sync"]["sync_progress_height"]
                 print(
-                    "**********************************************\nCurrent Blockchain Status: Full Node syncing to block",
+                    "**********************************************\n"
+                    "Current Blockchain Status: Full Node syncing to block",
                     sync_max_block,
                     "\nCurrently synced to block:",
                     sync_current_block,
@@ -76,7 +77,10 @@ async def show_async(
                 print(f"Current Blockchain Status: Syncing {sync_current_block}/{sync_max_block}.")
                 print("Peak: Hash:", peak.header_hash if peak is not None else "")
             elif peak is not None:
-                print(f"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\nCurrent Blockchain Status: Not Synced. Peak height: {peak.height}")
+                print(
+                    f"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n"
+                    "Current Blockchain Status: Not Synced. Peak height: {peak.height}"
+                )
             else:
                 print("#############################################\nSearching for an initial chain\n")
                 print("You may be able to expedite with 'chives show -a host:port' using a known node.\n")
