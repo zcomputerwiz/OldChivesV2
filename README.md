@@ -1,4 +1,3 @@
-# chives-blockchain
 
 ![Alt text](http://www.chivescoin.org/wp-content/uploads/2021/06/cropped-Chives_logo_small.png)
 

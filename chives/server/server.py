@@ -187,13 +187,23 @@ class ChivesServer:
         Periodically checks for connections with no activity (have not sent us any data), and removes them,
         to allow room for other peers.
         """
+        is_crawler = getattr(self.node, "crawl", None)
         while True:
+<<<<<<< HEAD:chives/server/server.py
             await asyncio.sleep(600)
             to_remove: List[WSChivesConnection] = []
+=======
+            await asyncio.sleep(600 if is_crawler is None else 2)
+            to_remove: List[WSChivesConnection] = []
+>>>>>>> upstream/main:chives/server/server.py
             for connection in self.all_connections.values():
                 if self._local_type == NodeType.FULL_NODE and connection.connection_type == NodeType.FULL_NODE:
-                    if time.time() - connection.last_message_time > 1800:
-                        to_remove.append(connection)
+                    if is_crawler is not None:
+                        if time.time() - connection.creation_time > 5:
+                            to_remove.append(connection)
+                    else:
+                        if time.time() - connection.last_message_time > 1800:
+                            to_remove.append(connection)
             for connection in to_remove:
                 self.log.debug(f"Garbage collecting connection {connection.peer_host} due to inactivity")
                 await connection.close()
@@ -230,7 +240,15 @@ class ChivesServer:
         else:
             self.p2p_crt_path, self.p2p_key_path = public_ssl_paths(self.root_path, self.config)
             ssl_context = ssl_context_for_server(
+<<<<<<< HEAD:chives/server/server.py
                 self.chives_ca_crt_path, self.chives_ca_key_path, self.p2p_crt_path, self.p2p_key_path, log=self.log
+=======
+                self.chives_ca_crt_path,
+                self.chives_ca_key_path,
+                self.p2p_crt_path,
+                self.p2p_key_path,
+                log=self.log,
+>>>>>>> upstream/main:chives/server/server.py
             )
 
         self.site = web.TCPSite(
@@ -243,6 +261,9 @@ class ChivesServer:
         self.log.info(f"Started listening on port: {self._port}")
 
     async def incoming_connection(self, request):
+        if getattr(self.node, "crawl", None) is not None:
+            return
+
         if request.remote in self.banned_peers and time.time() < self.banned_peers[request.remote]:
             self.log.warning(f"Peer {request.remote} is banned, refusing connection")
             return None
@@ -605,10 +626,14 @@ class ChivesServer:
 
             task_id = token_bytes()
             api_task = asyncio.create_task(api_call(payload_inc, connection_inc, task_id))
-            self.api_tasks[task_id] = api_task
+            # TODO: address hint error and remove ignore
+            #       error: Invalid index type "bytes" for "Dict[bytes32, Task[Any]]"; expected type "bytes32"  [index]
+            self.api_tasks[task_id] = api_task  # type: ignore[index]
             if connection_inc.peer_node_id not in self.tasks_from_peer:
                 self.tasks_from_peer[connection_inc.peer_node_id] = set()
-            self.tasks_from_peer[connection_inc.peer_node_id].add(task_id)
+            # TODO: address hint error and remove ignore
+            #       error: Argument 1 to "add" of "set" has incompatible type "bytes"; expected "bytes32"  [arg-type]
+            self.tasks_from_peer[connection_inc.peer_node_id].add(task_id)  # type: ignore[arg-type]
 
     async def send_to_others(
         self,

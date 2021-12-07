@@ -3,12 +3,12 @@ from setuptools import setup
 dependencies = [
     "multidict==5.1.0",  # Avoid 5.2.0 due to Avast
     "aiofiles==0.7.0",  # Async IO for files
-    "blspy==1.0.7",  # Signature library
+    "blspy==1.0.8",  # Signature library
     "chiavdf==1.0.3",  # timelord and vdf verification
     "chiabip158==1.0",  # bip158-style wallet filters
-    "chiapos==1.0.6",  # proof of space
+    "chiapos==1.0.7",  # proof of space
     "clvm==0.9.7",
-    "clvm_rs==0.1.15",
+    "clvm_rs==0.1.16",
     "clvm_tools==0.4.3",
     "aiohttp==3.7.4",  # HTTP server for full node rpc
     "aiosqlite==0.17.0",  # asyncio wrapper for sqlite, to store blocks
@@ -29,6 +29,7 @@ dependencies = [
     "click==7.1.2",  # For the CLI
     "dnspythonchia==2.2.0",  # Query DNS seeds
     "watchdog==2.1.6",  # Filesystem event watching - watches keyring.yaml
+    "dnslib==0.9.14",  # dns lib
 ]
 
 upnp_dependencies = [
@@ -71,49 +72,53 @@ kwargs = dict(
     ),
     packages=[
         "build_scripts",
-        "chives",
-        "chives.cmds",
-        "chives.clvm",
-        "chives.consensus",
-        "chives.daemon",
-        "chives.full_node",
-        "chives.timelord",
-        "chives.farmer",
-        "chives.farmer.pooling",
-        "chives.harvester",
-        "chives.introducer",
-        "chives.plotters",
-        "chives.plotting",
-        "chives.pools",
-        "chives.protocols",
-        "chives.rpc",
-        "chives.server",
-        "chives.simulator",
-        "chives.types.blockchain_format",
-        "chives.types",
-        "chives.util",
-        "chives.wallet",
-        "chives.wallet.puzzles",
-        "chives.wallet.rl_wallet",
-        "chives.wallet.cc_wallet",
-        "chives.wallet.did_wallet",
-        "chives.wallet.settings",
-        "chives.wallet.trading",
-        "chives.wallet.util",
-        "chives.ssl",
+        "replaceme",
+        "replaceme.cmds",
+        "replaceme.clvm",
+        "replaceme.consensus",
+        "replaceme.daemon",
+        "replaceme.full_node",
+        "replaceme.timelord",
+        "replaceme.farmer",
+        "replaceme.harvester",
+        "replaceme.introducer",
+        "replaceme.plotters",
+        "replaceme.plotting",
+        "replaceme.pools",
+        "replaceme.protocols",
+        "replaceme.rpc",
+        "replaceme.seeder",
+        "replaceme.seeder.util",
+        "replaceme.server",
+        "replaceme.simulator",
+        "replaceme.types.blockchain_format",
+        "replaceme.types",
+        "replaceme.util",
+        "replaceme.wallet",
+        "replaceme.wallet.puzzles",
+        "replaceme.wallet.rl_wallet",
+        "replaceme.wallet.cc_wallet",
+        "replaceme.wallet.did_wallet",
+        "replaceme.wallet.settings",
+        "replaceme.wallet.trading",
+        "replaceme.wallet.util",
+        "replaceme.ssl",
         "mozilla-ca",
     ],
     entry_points={
         "console_scripts": [
-            "chives = chives.cmds.chives:main",
-            "chives_wallet = chives.server.start_wallet:main",
-            "chives_full_node = chives.server.start_full_node:main",
-            "chives_harvester = chives.server.start_harvester:main",
-            "chives_farmer = chives.server.start_farmer:main",
-            "chives_introducer = chives.server.start_introducer:main",
-            "chives_timelord = chives.server.start_timelord:main",
-            "chives_timelord_launcher = chives.timelord.timelord_launcher:main",
-            "chives_full_node_simulator = chives.simulator.start_simulator:main",
+            "replaceme = replaceme.cmds.replaceme:main",
+            "replaceme_wallet = replaceme.server.start_wallet:main",
+            "replaceme_full_node = replaceme.server.start_full_node:main",
+            "replaceme_harvester = replaceme.server.start_harvester:main",
+            "replaceme_farmer = replaceme.server.start_farmer:main",
+            "replaceme_introducer = replaceme.server.start_introducer:main",
+            "replaceme_seeder = replaceme.cmds.seeder:main",
+            "replaceme_seeder_crawler = replaceme.seeder.start_crawler:main",
+            "replaceme_seeder_server = replaceme.seeder.dns_server:main",
+            "replaceme_timelord = replaceme.server.start_timelord:main",
+            "replaceme_timelord_launcher = replaceme.timelord.timelord_launcher:main",
+            "replaceme_full_node_simulator = replaceme.simulator.start_simulator:main",
         ]
     },
     package_data={
@@ -123,7 +128,7 @@ kwargs = dict(
         "chives.ssl": ["chives_ca.crt", "chives_ca.key", "dst_root_ca.pem"],
         "mozilla-ca": ["cacert.pem"],
     },
-    #use_scm_version={"fallback_version": "unknown-no-.git-directory"},
+    # use_scm_version={"fallback_version": "unknown-no-.git-directory"},
     version="1.0.0",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",

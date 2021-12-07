@@ -47,7 +47,12 @@ class UPnP:
                         keep_going = False
             except Exception as e:
                 log.info(
+<<<<<<< HEAD:chives/server/upnp.py
                     "UPnP failed. This is not required to run chives, it allows incoming connections from other peers."
+=======
+                    "UPnP failed. This is not required to run chives,"
+                    " it allows incoming connections from other peers."
+>>>>>>> upstream/main:chives/server/upnp.py
                 )
                 log.info(e)
 

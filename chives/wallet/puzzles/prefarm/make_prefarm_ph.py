@@ -46,9 +46,16 @@ def make_puzzle(amount: int) -> int:
         assert result_human is not None
         for cvp in result_human:
             assert len(cvp.vars) == 2
+<<<<<<< HEAD:chives/wallet/puzzles/prefarm/make_prefarm_ph.py
             total_chives += int_from_bytes(cvp.vars[1])
+=======
+            total_chives += int_from_bytes(cvp.vars[1])
+            # TODO: address hint error and remove ignore
+            #       error: Argument 1 to "encode_puzzle_hash" has incompatible type "bytes"; expected "bytes32"
+            #       [arg-type]
+>>>>>>> upstream/main:chives/wallet/puzzles/prefarm/make_prefarm_ph.py
             print(
-                f"{ConditionOpcode(cvp.opcode).name}: {encode_puzzle_hash(cvp.vars[0], prefix)},"
+                f"{ConditionOpcode(cvp.opcode).name}: {encode_puzzle_hash(cvp.vars[0], prefix)},"  # type: ignore[arg-type]  # noqa E501
                 f" amount: {int_from_bytes(cvp.vars[1])}"
             )
     return total_chives

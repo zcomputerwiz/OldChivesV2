@@ -26,7 +26,13 @@ class WalletNodeAPI:
     async def respond_removals(self, response: wallet_protocol.RespondRemovals, peer: WSChivesConnection):
         pass
 
+<<<<<<< HEAD:chives/wallet/wallet_node_api.py
     async def reject_removals_request(self, response: wallet_protocol.RejectRemovalsRequest, peer: WSChivesConnection):
+=======
+    async def reject_removals_request(
+        self, response: wallet_protocol.RejectRemovalsRequest, peer: WSChivesConnection
+    ):
+>>>>>>> upstream/main:chives/wallet/wallet_node_api.py
         """
         The full node has rejected our request for removals.
         """

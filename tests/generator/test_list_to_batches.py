@@ -1,5 +1,9 @@
 import pytest
+<<<<<<< HEAD
 from chives.util.generator_tools import list_to_batches
+=======
+from chives.util.generator_tools import list_to_batches
+>>>>>>> upstream/main
 
 
 def test_empty_lists():

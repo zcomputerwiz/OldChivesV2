@@ -29,8 +29,14 @@ testnet_kwargs = {
     # We override this value based on the chain being run (testnet0, testnet1, mainnet, etc)
     # Default used for tests is std_hash(b'')
     "GENESIS_CHALLENGE": bytes.fromhex("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
+<<<<<<< HEAD:chives/consensus/default_constants.py
     # Forks of chives should change this value to provide replay attack protection. This is set to mainnet genesis chall
     "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("69cfa80789667c51428eaf2f2126e6be944462ee5b59b8128e90b9a650f865c1"),
+=======
+    # Forks of chives should change this value to provide replay attack protection.
+    # This is set to mainnet genesis challenge
+    "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("ccd5bb71183532bff220ba46c268991a3ff07eb358e8255a65c30a2dce0e5fbb"),
+>>>>>>> upstream/main:chives/consensus/default_constants.py
     "GENESIS_PRE_FARM_POOL_PUZZLE_HASH": bytes.fromhex(
         "6d13b5296e6e7e2307c79294053b2fc49899cdc0e105beb7d2d4fac875c94bd1"
     ),
