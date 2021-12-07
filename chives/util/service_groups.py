@@ -1,7 +1,10 @@
 from typing import KeysView, Generator
 
 SERVICES_FOR_GROUP = {
-    "all": "chives_harvester chives_timelord_launcher chives_timelord chives_farmer chives_full_node chives_wallet".split(),
+    "all": (
+        "chives_harvester chives_timelord_launcher chives_timelord "
+        "chives_farmer chives_full_node chives_wallet"
+    ).split(),
     "node": "chives_full_node".split(),
     "harvester": "chives_harvester".split(),
     "farmer": "chives_harvester chives_farmer chives_full_node chives_wallet".split(),

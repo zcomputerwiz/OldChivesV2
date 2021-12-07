@@ -97,8 +97,8 @@ steps:
   - bash: |
       ls $(System.DefaultWorkingDirectory)/build_scripts/final_installer/
       cd $(System.DefaultWorkingDirectory)/build_scripts/
-      export REPLACEME_VERSION="Replaceme-"$(<version.txt)
-      shasum -a 256 $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$REPLACEME_VERSION.dmg > $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$REPLACEME_VERSION.dmg.sha256
+      export CHIVES_VERSION="Chives-"$(<version.txt)
+      shasum -a 256 $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$CHIVES_VERSION.dmg > $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$CHIVES_VERSION.dmg.sha256
       ls $(System.DefaultWorkingDirectory)/build_scripts/final_installer/
     displayName: "Create Checksums"
 
@@ -111,10 +111,10 @@ steps:
 
   - bash: |
       cd $(System.DefaultWorkingDirectory)/build_scripts/
-      export REPLACEME_VERSION="Replaceme-"$(<version.txt)
+      export CHIVES_VERSION="Chives-"$(<version.txt)
 
       pip3 install py3createtorrent
-      py3createtorrent -f -t udp://tracker.opentrackr.org:1337/announce $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$REPLACEME_VERSION.dmg -o $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$REPLACEME_VERSION.dmg.torrent --webseed https://download-chia-net.s3.us-west-2.amazonaws.com/install/$REPLACEME_VERSION.dmg
+      py3createtorrent -f -t udp://tracker.opentrackr.org:1337/announce $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$CHIVES_VERSION.dmg -o $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$CHIVES_VERSION.dmg.torrent --webseed https://download-chia-net.s3.us-west-2.amazonaws.com/install/$CHIVES_VERSION.dmg
       ls
     displayName: "Create torrent file"
     condition: and(succeeded(), contains(variables['build.sourceBranch'], 'refs/tags/'))
@@ -124,9 +124,9 @@ steps:
       export AWS_SECRET_ACCESS_KEY=$(SecretKey)
       export AWS_DEFAULT_REGION=us-west-2
       cd $(System.DefaultWorkingDirectory)/build_scripts/
-      export REPLACEME_VERSION="Replaceme-"$(<version.txt)
-      aws s3 cp $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$REPLACEME_VERSION.dmg s3://download-replaceme-net/beta/Replaceme-intel_latest_beta.dmg
-      aws s3 cp $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$REPLACEME_VERSION.dmg.sha256 s3://download-chia-net/beta/Replaceme-intel_latest_beta.dmg.sha256
+      export CHIVES_VERSION="Chives-"$(<version.txt)
+      aws s3 cp $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$CHIVES_VERSION.dmg s3://download-chives-net/beta/Chives-intel_latest_beta.dmg
+      aws s3 cp $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$CHIVES_VERSION.dmg.sha256 s3://download-chia-net/beta/Chives-intel_latest_beta.dmg.sha256
     displayName: "Upload Beta Files"
     condition: and(succeeded(), contains(variables['build.sourceBranch'], 'refs/heads/main'))
 
@@ -135,10 +135,10 @@ steps:
       export AWS_SECRET_ACCESS_KEY=$(SecretKey)
       export AWS_DEFAULT_REGION=us-west-2
       cd $(System.DefaultWorkingDirectory)/build_scripts/
-      export REPLACEME_VERSION="Replaceme-"$(<version.txt)
-      aws s3 cp $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$REPLACEME_VERSION.dmg s3://download-chia-net/install/
-      aws s3 cp $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$REPLACEME_VERSION.dmg.sha256 s3://download-chia-net/install/
-      aws s3 cp $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$REPLACEME_VERSION.dmg.torrent s3://download-chia-net/torrents/
+      export CHIVES_VERSION="Chives-"$(<version.txt)
+      aws s3 cp $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$CHIVES_VERSION.dmg s3://download-chia-net/install/
+      aws s3 cp $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$CHIVES_VERSION.dmg.sha256 s3://download-chia-net/install/
+      aws s3 cp $(System.DefaultWorkingDirectory)/build_scripts/final_installer/$CHIVES_VERSION.dmg.torrent s3://download-chia-net/torrents/
     displayName: "Upload Release Files"
     condition: and(succeeded(), contains(variables['build.sourceBranch'], 'refs/tags/'))
 

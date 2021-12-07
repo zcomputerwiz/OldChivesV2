@@ -108,7 +108,7 @@ fi
 #
 # Ask for username and password. password should be an app specific password.
 # Generate app specific password https://support.apple.com/en-us/HT204397
-# xcrun altool --notarize-app -f Replaceme-0.1.X.dmg --primary-bundle-id net.replaceme.blockchain -u username -p password
+# xcrun altool --notarize-app -f Chives-0.1.X.dmg --primary-bundle-id net.chives.blockchain -u username -p password
 # xcrun altool --notarize-app; -should return REQUEST-ID, use it in next command
 #
 # Wait until following command return a success message".
@@ -116,7 +116,7 @@ fi
 # It can take a while, run it every few minutes.
 #
 # Once that is successful, execute the following command":
-# xcrun stapler staple Replaceme-0.1.X.dmg
+# xcrun stapler staple Chives-0.1.X.dmg
 #
 # Validate DMG:
-# xcrun stapler validate Replaceme-0.1.X.dmg
+# xcrun stapler validate Chives-0.1.X.dmg

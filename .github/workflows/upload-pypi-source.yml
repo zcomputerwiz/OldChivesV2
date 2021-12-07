@@ -51,7 +51,7 @@ jobs:
 
     - name: Lint source with flake8
       run: |
-        flake8 replaceme tests
+        flake8 chives tests
 
     - name: Lint source with mypy
       run: |

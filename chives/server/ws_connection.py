@@ -105,7 +105,7 @@ class WSChivesConnection:
         self.outbound_rate_limiter = RateLimiter(incoming=False, percentage_of_limit=outbound_rate_limit_percent)
         self.inbound_rate_limiter = RateLimiter(incoming=True, percentage_of_limit=inbound_rate_limit_percent)
 
-        # Used by the Replaceme Seeder.
+        # Used by the Chives Seeder.
         self.version = None
 
     async def perform_handshake(self, network_id: str, protocol_version: str, server_port: int, local_type: NodeType):
@@ -507,7 +507,7 @@ class WSChivesConnection:
             await asyncio.sleep(3)
         return None
 
-    # Used by the Replaceme Seeder.
+    # Used by the Chives Seeder.
     def get_version(self):
         return self.version
 
