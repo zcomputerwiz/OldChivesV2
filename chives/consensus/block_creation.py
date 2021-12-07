@@ -8,9 +8,9 @@ from blspy import G1Element, G2Element
 from chiabip158 import PyBIP158
 
 from chives.consensus.block_record import BlockRecord
-from chives.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
+from chives.consensus.block_rewards import calculate_base_community_reward, calculate_base_farmer_reward, calculate_pool_reward
 from chives.consensus.blockchain_interface import BlockchainInterface
-from chives.consensus.coinbase import create_farmer_coin, create_pool_coin
+from chives.consensus.coinbase import create_farmer_coin, create_pool_coin, create_community_coin
 from chives.consensus.constants import ConsensusConstants
 from chives.consensus.cost_calculator import NPCResult, calculate_cost_of_program
 from chives.full_node.mempool_check_conditions import get_name_puzzle_conditions
