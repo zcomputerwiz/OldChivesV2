@@ -279,14 +279,10 @@ async def summary(
 
     if amounts is None:
         if wallet_not_running:
-<<<<<<< HEAD:chives/cmds/farm_funcs.py
-            print("For details on farmed rewards and fees you should run 'chives start wallet' and 'chives wallet show'")
-=======
             print(
                 "For details on farmed rewards and fees you should run"
                 " 'chives start wallet' and 'chives wallet show'"
             )
->>>>>>> upstream/main:chives/cmds/farm_funcs.py
         elif wallet_not_ready:
             print("For details on farmed rewards and fees you should run 'chives wallet show'")
     else:

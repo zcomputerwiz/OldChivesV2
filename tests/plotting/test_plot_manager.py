@@ -6,12 +6,8 @@ from typing import Callable, List
 import pytest
 
 from dataclasses import dataclass
-<<<<<<< HEAD
-from chives.plotting.util import (
-=======
 from chives.plotting.util import (
     PlotInfo,
->>>>>>> upstream/main
     PlotRefreshResult,
     PlotRefreshEvents,
     remove_plot,
@@ -19,14 +15,9 @@ from chives.plotting.util import (
     add_plot_directory,
     remove_plot_directory,
 )
-<<<<<<< HEAD
-from chives.util.path import mkdir
-from chives.plotting.manager import PlotManager
-=======
 from chives.util.config import create_default_chives_config
 from chives.util.path import mkdir
 from chives.plotting.manager import PlotManager
->>>>>>> upstream/main
 from tests.block_tools import get_plot_dir
 from tests.setup_nodes import bt
 from tests.time_out_assert import time_out_assert

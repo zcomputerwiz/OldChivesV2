@@ -404,12 +404,6 @@ class TradeManager:
                 unspent = await self.wallet_state_manager.get_spendable_coins_for_wallet(1)
                 if coinsol.coin in [record.coin for record in unspent]:
                     return False, None, "can't respond to own offer"
-<<<<<<< HEAD:chives/wallet/trade_manager.py
-                if chives_discrepancy is None:
-                    chives_discrepancy = get_output_discrepancy_for_puzzle_and_solution(coinsol.coin, puzzle, solution)
-                else:
-                    chives_discrepancy += get_output_discrepancy_for_puzzle_and_solution(coinsol.coin, puzzle, solution)
-=======
                 if chives_discrepancy is None:
                     chives_discrepancy = get_output_discrepancy_for_puzzle_and_solution(
                         coinsol.coin, puzzle, solution
@@ -418,7 +412,6 @@ class TradeManager:
                     chives_discrepancy += get_output_discrepancy_for_puzzle_and_solution(
                         coinsol.coin, puzzle, solution
                     )
->>>>>>> upstream/main:chives/wallet/trade_manager.py
                 coinsols.append(coinsol)
 
         chives_spend_bundle: Optional[SpendBundle] = None
@@ -552,16 +545,6 @@ class TradeManager:
 
         # Add transaction history for this trade
         now = uint64(int(time.time()))
-<<<<<<< HEAD:chives/wallet/trade_manager.py
-        if chives_spend_bundle is not None:
-            spend_bundle = SpendBundle.aggregate([spend_bundle, chives_spend_bundle])
-            if chives_discrepancy < 0:
-                tx_record = TransactionRecord(
-                    confirmed_at_height=uint32(0),
-                    created_at_time=now,
-                    to_puzzle_hash=token_bytes(),
-                    amount=uint64(abs(chives_discrepancy)),
-=======
         if chives_spend_bundle is not None:
             spend_bundle = SpendBundle.aggregate([spend_bundle, chives_spend_bundle])
             if chives_discrepancy < 0:
@@ -573,7 +556,6 @@ class TradeManager:
                     created_at_time=now,
                     to_puzzle_hash=token_bytes(),  # type: ignore[arg-type]
                     amount=uint64(abs(chives_discrepancy)),
->>>>>>> upstream/main:chives/wallet/trade_manager.py
                     fee_amount=uint64(0),
                     confirmed=False,
                     sent=uint32(10),
@@ -593,13 +575,8 @@ class TradeManager:
                 tx_record = TransactionRecord(
                     confirmed_at_height=uint32(0),
                     created_at_time=uint64(int(time.time())),
-<<<<<<< HEAD:chives/wallet/trade_manager.py
-                    to_puzzle_hash=token_bytes(),
-                    amount=uint64(abs(chives_discrepancy)),
-=======
                     to_puzzle_hash=token_bytes(),  # type: ignore[arg-type]
                     amount=uint64(abs(chives_discrepancy)),
->>>>>>> upstream/main:chives/wallet/trade_manager.py
                     fee_amount=uint64(0),
                     confirmed=False,
                     sent=uint32(10),
@@ -616,14 +593,10 @@ class TradeManager:
 
         for colour, amount in cc_discrepancies.items():
             wallet = wallets[colour]
-<<<<<<< HEAD:chives/wallet/trade_manager.py
-            if chives_discrepancy > 0:
-=======
             if chives_discrepancy > 0:
                 # TODO: address hint error and remove ignore
                 #       error: Argument "to_puzzle_hash" to "TransactionRecord" has incompatible type "bytes"; expected
                 #       "bytes32"  [arg-type]
->>>>>>> upstream/main:chives/wallet/trade_manager.py
                 tx_record = TransactionRecord(
                     confirmed_at_height=uint32(0),
                     created_at_time=uint64(int(time.time())),
