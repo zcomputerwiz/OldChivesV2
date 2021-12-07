@@ -7,32 +7,6 @@ import blspy
 from blspy import G1Element, G2Element
 from chiabip158 import PyBIP158
 
-<<<<<<< HEAD:chives/consensus/block_creation.py
-from chives.consensus.block_record import BlockRecord
-from chives.consensus.block_rewards import calculate_base_community_reward, calculate_base_farmer_reward, calculate_pool_reward
-from chives.consensus.blockchain_interface import BlockchainInterface
-from chives.consensus.coinbase import create_community_coin, create_farmer_coin, create_pool_coin
-from chives.consensus.constants import ConsensusConstants
-from chives.consensus.cost_calculator import NPCResult, calculate_cost_of_program
-from chives.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from chives.full_node.signage_point import SignagePoint
-from chives.types.blockchain_format.coin import Coin, hash_coin_list
-from chives.types.blockchain_format.foliage import Foliage, FoliageBlockData, FoliageTransactionBlock, TransactionsInfo
-from chives.types.blockchain_format.pool_target import PoolTarget
-from chives.types.blockchain_format.proof_of_space import ProofOfSpace
-from chives.types.blockchain_format.reward_chain_block import RewardChainBlock, RewardChainBlockUnfinished
-from chives.types.blockchain_format.sized_bytes import bytes32
-from chives.types.blockchain_format.vdf import VDFInfo, VDFProof
-from chives.types.end_of_slot_bundle import EndOfSubSlotBundle
-from chives.types.full_block import FullBlock
-from chives.types.generator_types import BlockGenerator
-from chives.types.unfinished_block import UnfinishedBlock
-from chives.util.hash import std_hash
-from chives.util.ints import uint8, uint32, uint64, uint128
-from chives.util.merkle_set import MerkleSet
-from chives.util.prev_transaction_block import get_prev_transaction_block
-from chives.util.recursive_replace import recursive_replace
-=======
 from chives.consensus.block_record import BlockRecord
 from chives.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
 from chives.consensus.blockchain_interface import BlockchainInterface
@@ -62,7 +36,6 @@ from chives.util.ints import uint8, uint32, uint64, uint128
 from chives.util.merkle_set import MerkleSet
 from chives.util.prev_transaction_block import get_prev_transaction_block
 from chives.util.recursive_replace import recursive_replace
->>>>>>> upstream/main:chives/consensus/block_creation.py
 
 log = logging.getLogger(__name__)
 

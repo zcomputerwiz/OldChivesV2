@@ -91,17 +91,6 @@ class PlotEvent(str, Enum):
 # determine if application is a script file or frozen exe
 if getattr(sys, "frozen", False):
     name_map = {
-<<<<<<< HEAD:chives/daemon/server.py
-        "chives": "chives",
-        "chives_wallet": "start_wallet",
-        "chives_full_node": "start_full_node",
-        "chives_harvester": "start_harvester",
-        "chives_farmer": "start_farmer",
-        "chives_introducer": "start_introducer",
-        "chives_timelord": "start_timelord",
-        "chives_timelord_launcher": "timelord_launcher",
-        "chives_full_node_simulator": "start_simulator",
-=======
         "chives": "chives",
         "chives_wallet": "start_wallet",
         "chives_full_node": "start_full_node",
@@ -114,7 +103,6 @@ if getattr(sys, "frozen", False):
         "chives_seeder": "chives_seeder",
         "chives_seeder_crawler": "chives_seeder_crawler",
         "chives_seeder_dns": "chives_seeder_dns",
->>>>>>> upstream/main:chives/daemon/server.py
     }
 
     def executable_for_service(service_name: str) -> str:

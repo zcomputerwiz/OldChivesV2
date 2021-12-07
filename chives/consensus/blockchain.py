@@ -23,31 +23,6 @@ from chives.consensus.multiprocess_validation import (
     pre_validate_blocks_multiprocessing,
     _run_generator,
 )
-<<<<<<< HEAD:chives/consensus/blockchain.py
-from chives.full_node.block_store import BlockStore
-from chives.full_node.coin_store import CoinStore
-from chives.full_node.hint_store import HintStore
-from chives.full_node.mempool_check_conditions import get_name_puzzle_conditions
-from chives.types.blockchain_format.coin import Coin
-from chives.types.blockchain_format.sized_bytes import bytes32
-from chives.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chives.types.blockchain_format.vdf import VDFInfo
-from chives.types.coin_record import CoinRecord
-from chives.types.condition_opcodes import ConditionOpcode
-from chives.types.end_of_slot_bundle import EndOfSubSlotBundle
-from chives.types.full_block import FullBlock
-from chives.types.generator_types import BlockGenerator, GeneratorArg
-from chives.types.header_block import HeaderBlock
-from chives.types.unfinished_block import UnfinishedBlock
-from chives.types.unfinished_header_block import UnfinishedHeaderBlock
-from chives.types.weight_proof import SubEpochChallengeSegment
-from chives.util.errors import Err, ConsensusError
-from chives.util.generator_tools import get_block_header, tx_removals_and_additions
-from chives.util.ints import uint16, uint32, uint64, uint128
-from chives.util.streamable import recurse_jsonify
-from chives.util.default_root import DEFAULT_ROOT_PATH
-from chives.util.config import load_config
-=======
 from chives.full_node.block_store import BlockStore
 from chives.full_node.coin_store import CoinStore
 from chives.full_node.hint_store import HintStore
@@ -72,7 +47,6 @@ from chives.util.streamable import recurse_jsonify
 from chives.full_node.block_height_map import BlockHeightMap
 from chives.util.default_root import DEFAULT_ROOT_PATH
 from chives.util.config import load_config
->>>>>>> upstream/main:chives/consensus/blockchain.py
 
 log = logging.getLogger(__name__)
 

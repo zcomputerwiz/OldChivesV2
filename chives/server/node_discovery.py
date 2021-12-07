@@ -36,11 +36,7 @@ class FullNodeDiscovery:
 
     def __init__(
         self,
-<<<<<<< HEAD:chives/server/node_discovery.py
         server: ChivesServer,
-=======
-        server: ChivesServer,
->>>>>>> upstream/main:chives/server/node_discovery.py
         target_outbound_count: int,
         peer_store_resolver: PeerStoreResolver,
         introducer_info: Optional[Dict],

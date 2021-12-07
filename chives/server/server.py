@@ -189,13 +189,8 @@ class ChivesServer:
         """
         is_crawler = getattr(self.node, "crawl", None)
         while True:
-<<<<<<< HEAD:chives/server/server.py
-            await asyncio.sleep(600)
-            to_remove: List[WSChivesConnection] = []
-=======
             await asyncio.sleep(600 if is_crawler is None else 2)
             to_remove: List[WSChivesConnection] = []
->>>>>>> upstream/main:chives/server/server.py
             for connection in self.all_connections.values():
                 if self._local_type == NodeType.FULL_NODE and connection.connection_type == NodeType.FULL_NODE:
                     if is_crawler is not None:
@@ -240,15 +235,11 @@ class ChivesServer:
         else:
             self.p2p_crt_path, self.p2p_key_path = public_ssl_paths(self.root_path, self.config)
             ssl_context = ssl_context_for_server(
-<<<<<<< HEAD:chives/server/server.py
-                self.chives_ca_crt_path, self.chives_ca_key_path, self.p2p_crt_path, self.p2p_key_path, log=self.log
-=======
                 self.chives_ca_crt_path,
                 self.chives_ca_key_path,
                 self.p2p_crt_path,
                 self.p2p_key_path,
                 log=self.log,
->>>>>>> upstream/main:chives/server/server.py
             )
 
         self.site = web.TCPSite(

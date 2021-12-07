@@ -8,20 +8,6 @@ from typing import Callable, Dict, List, Optional, Tuple, Set
 from blspy import AugSchemeMPL, G2Element
 from chiabip158 import PyBIP158
 
-<<<<<<< HEAD:chives/full_node/full_node_api.py
-import chives.server.ws_connection as ws
-from chives.consensus.block_creation import create_unfinished_block
-from chives.consensus.block_record import BlockRecord
-from chives.consensus.pot_iterations import calculate_ip_iters, calculate_iterations_quality, calculate_sp_iters
-from chives.full_node.bundle_tools import best_solution_generator_from_template, simple_solution_generator
-from chives.full_node.full_node import FullNode
-from chives.full_node.mempool_check_conditions import get_puzzle_and_solution_for_coin
-from chives.full_node.signage_point import SignagePoint
-from chives.protocols import farmer_protocol, full_node_protocol, introducer_protocol, timelord_protocol, wallet_protocol
-from chives.protocols.full_node_protocol import RejectBlock, RejectBlocks
-from chives.protocols.protocol_message_types import ProtocolMessageTypes
-from chives.protocols.wallet_protocol import (
-=======
 import chives.server.ws_connection as ws
 from chives.consensus.block_creation import create_unfinished_block
 from chives.consensus.block_record import BlockRecord
@@ -40,7 +26,6 @@ from chives.protocols import (
 from chives.protocols.full_node_protocol import RejectBlock, RejectBlocks
 from chives.protocols.protocol_message_types import ProtocolMessageTypes
 from chives.protocols.wallet_protocol import (
->>>>>>> upstream/main:chives/full_node/full_node_api.py
     PuzzleSolutionResponse,
     RejectHeaderBlocks,
     RejectHeaderRequest,

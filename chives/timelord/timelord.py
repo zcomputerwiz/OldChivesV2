@@ -28,18 +28,11 @@ from chives.types.blockchain_format.slots import (
     RewardChainSubSlot,
     SubSlotProofs,
 )
-<<<<<<< HEAD:chives/timelord/timelord.py
-from chives.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from chives.types.blockchain_format.vdf import VDFInfo, VDFProof
-from chives.types.end_of_slot_bundle import EndOfSubSlotBundle
-from chives.util.ints import uint8, uint32, uint64, uint128
-=======
 from chives.types.blockchain_format.sub_epoch_summary import SubEpochSummary
 from chives.types.blockchain_format.vdf import VDFInfo, VDFProof
 from chives.types.end_of_slot_bundle import EndOfSubSlotBundle
 from chives.util.ints import uint8, uint16, uint32, uint64, uint128
 from concurrent.futures import ProcessPoolExecutor
->>>>>>> upstream/main:chives/timelord/timelord.py
 
 log = logging.getLogger(__name__)
 

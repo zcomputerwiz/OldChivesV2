@@ -70,12 +70,8 @@ from chives.util.path import mkdir, path_from_root
 from chives.util.safe_cancel_task import cancel_task_safe
 from chives.util.profiler import profile_task
 from datetime import datetime
-<<<<<<< HEAD:chives/full_node/full_node.py
-from chives.util.db_synchronous import db_synchronous_on
-=======
 from chives.util.db_synchronous import db_synchronous_on
 from chives.util.db_version import lookup_db_version
->>>>>>> upstream/main:chives/full_node/full_node.py
 
 
 class FullNode:
@@ -331,13 +327,9 @@ class FullNode:
         if self.state_changed_callback is not None:
             self.state_changed_callback(change)
 
-<<<<<<< HEAD:chives/full_node/full_node.py
-    async def short_sync_batch(self, peer: ws.WSChivesConnection, start_height: uint32, target_height: uint32) -> bool:
-=======
     async def short_sync_batch(
         self, peer: ws.WSChivesConnection, start_height: uint32, target_height: uint32
     ) -> bool:
->>>>>>> upstream/main:chives/full_node/full_node.py
         """
         Tries to sync to a chain which is not too far in the future, by downloading batches of blocks. If the first
         block that we download is not connected to our chain, we return False and do an expensive long sync instead.

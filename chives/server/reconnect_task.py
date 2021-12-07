@@ -7,13 +7,9 @@ from chives.types.peer_info import PeerInfo
 from chives.util.network import get_host_addr
 
 
-<<<<<<< HEAD:chives/server/reconnect_task.py
-def start_reconnect_task(server: ChivesServer, peer_info_arg: PeerInfo, log, auth: bool, prefer_ipv6: Optional[bool]):
-=======
 def start_reconnect_task(
     server: ChivesServer, peer_info_arg: PeerInfo, log, auth: bool, prefer_ipv6: Optional[bool]
 ):
->>>>>>> upstream/main:chives/server/reconnect_task.py
     """
     Start a background task that checks connection and reconnects periodically to a peer.
     """

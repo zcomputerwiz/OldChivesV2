@@ -361,12 +361,8 @@ class KeyringWrapper:
                 "passphrase."
             )
             print(
-<<<<<<< HEAD:chives/util/keyring_wrapper.py
-                "Would you like to set a master passphrase now? Use 'chives passphrase set' to change the passphrase.\n"
-=======
                 "Would you like to set a master passphrase now?"
                 " Use 'chives passphrase set' to change the passphrase.\n"
->>>>>>> upstream/main:chives/util/keyring_wrapper.py
             )
 
             response = prompt_yes_no("Set keyring master passphrase? (y/n) ")
@@ -383,12 +379,8 @@ class KeyringWrapper:
                 )
             else:
                 print(
-<<<<<<< HEAD:chives/util/keyring_wrapper.py
-                    "Will skip setting a master passphrase. Use 'chives passphrase set' to set the master passphrase.\n"
-=======
                     "Will skip setting a master passphrase."
                     " Use 'chives passphrase set' to set the master passphrase.\n"
->>>>>>> upstream/main:chives/util/keyring_wrapper.py
                 )
         else:
             import colorama

@@ -214,17 +214,11 @@ async def summary(
         print("Farming")
 
     if amounts is not None:
-<<<<<<< HEAD:chives/cmds/farm_funcs.py
-        print(f"Total chives farmed: {amounts['farmed_amount'] / units['chives']}")
-        print(f"User transaction fees: {amounts['fee_amount'] / units['chives']}")
-        print(f"Block rewards: {(amounts['farmer_reward_amount'] + amounts['community_reward_amount'] + amounts['pool_reward_amount']) / units['chives']}")
-=======
         print(f"Total chives farmed: {amounts['farmed_amount'] / units['chives']}")
         print(f"User transaction fees: {amounts['fee_amount'] / units['chives']}")
         print(
             f"Block rewards: {(amounts['farmer_reward_amount'] + amounts['pool_reward_amount']) / units['chives']}"
         )
->>>>>>> upstream/main:chives/cmds/farm_funcs.py
         print(f"Last height farmed: {amounts['last_height_farmed']}")
         print(f"Farmer Reward: {amounts['farmer_reward_amount'] / units['chives']}")
         print(f"Pool Reward: {amounts['pool_reward_amount'] / units['chives']}")
